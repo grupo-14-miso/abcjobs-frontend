@@ -5,7 +5,7 @@ name: CI/CD Pipeline Front
 on:
   push:
     branches:
-      - develop
+      - main
 jobs:
   build-frontend:
     runs-on: ubuntu-latest
