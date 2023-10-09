@@ -30,5 +30,6 @@ jobs:
         gcloud auth activate-service-account --key-file=<(echo "$GCP_SA_KEY")
         gsutil -m cp -r dist gs://abc-jobs-miso-uniandes-g14
         gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
-        cd dist
+        gsutil rsync -r gs://ng-app-bucket ./abc-jobs-ui
+        cd abc-jobs-ui
         gcloud app deploy
