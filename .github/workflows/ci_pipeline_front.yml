@@ -31,6 +31,6 @@ jobs:
         gsutil -m cp -r dist gs://abc-jobs-miso-uniandes-g14
         gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
         mkdir abc-jobs-ui
-        gsutil -m cp -r gs://abc-jobs-miso-uniandes-g14 ./abc-jobs-ui
+        gsutil rsync -r gs://abc-jobs-miso-uniandes-g14  ./abc-jobs-ui
         cd abc-jobs-ui
-        gcloud app deploy
+        echo "y" | gcloud app deploy
