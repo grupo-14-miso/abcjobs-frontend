@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { Profile } from '../../model/profile';
-
+import { PreloaderService } from '../../../../core/template/services/preloader.service';
 
 @Component({
   selector: 'app-search',
@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private preloaderService: PreloaderService,
     private userService: UserService
 
   ) { }
@@ -45,11 +46,15 @@ export class SearchComponent implements OnInit {
   }
 
   getListProfiles() {
+
+    this.preloaderService.showPreloader();
+
     this.userService.getProfiles()
     .subscribe(
       (data) => {
         this.profiles = data;
         this.filterTypes();
+        this.preloaderService.hidePreloader()
       },
       (error) => {
         console.error(error);
