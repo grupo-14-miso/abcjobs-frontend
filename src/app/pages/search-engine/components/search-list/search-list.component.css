@@ -1,0 +1,5 @@
+.imagen-de-perfil {
+  width: 100px; /* Ajusta el ancho de la imagen según tus preferencias */
+  height: 100px; /* Ajusta el alto de la imagen según tus preferencias */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+}
