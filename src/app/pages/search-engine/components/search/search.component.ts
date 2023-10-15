@@ -72,13 +72,27 @@ export class SearchComponent implements OnInit {
 
   search() {
     this.preloaderService.showPreloader();
+    console.log(this.searchForm.value)
 
     const searchParams = new SearchParams();
-    searchParams.softSkills = ['lider', 'puntual', 'mejor'];
-    searchParams.idiomas = ['ingles', 'spanish'];
-    searchParams.tecnologiasHerramientas = ['slack'];
-    searchParams.rol = ['Devops'];
-    searchParams.lenguajes_programacion = ['java'];
+
+    const rolControl = this.searchForm.get('rol');
+    const lenguageControl = this.searchForm.get('lenguage');
+    const skillControl = this.searchForm.get('skill');
+    const idiomControl = this.searchForm.get('idiom');
+
+    if (rolControl) {
+      searchParams.rol = rolControl.value;
+    }
+    if (lenguageControl) {
+      searchParams.lenguajes_programacion = lenguageControl.value;
+    }
+    if (skillControl) {
+      searchParams.softSkills = skillControl.value;
+    }
+    if (idiomControl) {
+      searchParams.idiomas = idiomControl.value;
+    }
 
     this.userService.search(searchParams).subscribe({
       next: (data) => {

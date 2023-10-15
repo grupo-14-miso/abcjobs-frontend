@@ -6,12 +6,12 @@
           <div class="card-body">
             <h4 class="card-title">Listado de candidatos</h4>
             <div class="row text-center">
-              <div *ngFor="let candidate of candidates" class="col-md-3 d-inline-block ml-2">
+              <div class="col-md-3" *ngFor="let candidate of candidates">
                 <div class="card border-primary mb-3" style="max-width: 20rem;">
                   <div class="card-body">
                     <img src="../../../../../assets/perfil.jpeg" alt="Imagen de perfil" class="imagen-de-perfil" />
                     <h5><b>{{ candidate.Nombre }}  {{ candidate.apellido }}</b></h5>
-                    <p class="card-text">Architect</p>
+                    <p class="card-text">{{ candidate.educacion[0].rol }}</p>
                   </div>
                 </div>
               </div>
