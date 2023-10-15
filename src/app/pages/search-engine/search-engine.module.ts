@@ -5,6 +5,7 @@ import { SearchEngineModuleRoutingModule } from './search-engine-routing.module'
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
+import { SearchListComponent } from './components/search-list/search-list.component';
 
 
 @NgModule({
@@ -15,9 +16,10 @@ import { UserService } from './services/user.service';
     RouterModule,
   ],
   declarations: [
-    SearchComponent
+    SearchComponent,
+    SearchListComponent
   ],
-  exports: [SearchComponent],
+  exports: [SearchComponent, SearchListComponent],
   providers: [UserService],
 
 })
