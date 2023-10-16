@@ -6,9 +6,10 @@ env_variables:
   BUCKET_NAME: "abc-jobs-miso-uniandes-g14"
 
 handlers:
-- url: /
+- url: /(.*\.(gif|png|jpg|jpeg|css|js)(|\.map))$
+  static_files: dist/abc-jobs-ui/\1
+  upload: dist/abc-jobs-ui/(.*\.(gif|png|jpg|jpeg|css|js)(|\.map))$
+
+- url: /.*
   static_files: dist/abc-jobs-ui/index.html
   upload: dist/abc-jobs-ui/index.html
-
-- url: /
-  static_dir: dist/abc-jobs-ui
