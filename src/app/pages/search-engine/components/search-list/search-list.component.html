@@ -12,6 +12,7 @@
                     <img src="../../../../../assets/perfil.jpeg" alt="Imagen de perfil" class="imagen-de-perfil" />
                     <h5><b>{{ candidate.Nombre }}  {{ candidate.apellido }}</b></h5>
                     <p class="card-text">{{ candidate.educacion[0].rol }}</p>
+                    <button type="button" class="btn btn-info" (click)="openModal(candidate)">Ver mas</button>
                   </div>
                 </div>
               </div>
@@ -21,4 +22,24 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detalle candidato</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-search-detail [candidate]="candidateSelect"></app-search-detail>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
 </div>

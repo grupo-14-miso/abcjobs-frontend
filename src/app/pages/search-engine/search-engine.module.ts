@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
 import { SearchListComponent } from './components/search-list/search-list.component';
+import { SearchDetailComponent } from './components/search-detail/search-detail.component';
 
 
 @NgModule({
@@ -17,9 +18,10 @@ import { SearchListComponent } from './components/search-list/search-list.compon
   ],
   declarations: [
     SearchComponent,
-    SearchListComponent
+    SearchListComponent,
+    SearchDetailComponent
   ],
-  exports: [SearchComponent, SearchListComponent],
+  exports: [SearchComponent, SearchListComponent, SearchDetailComponent],
   providers: [UserService],
 
 })
