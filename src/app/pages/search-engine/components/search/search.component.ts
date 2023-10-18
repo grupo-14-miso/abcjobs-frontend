@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
   languages: string[] = [];
   skills: string[] = [];
   idioms: string[] = [];
+  tools: string[] = [];
 
   searchForm!: FormGroup;
 
@@ -39,6 +40,7 @@ export class SearchComponent implements OnInit {
       lenguage: [''],
       skill: [''],
       idiom: [''],
+      tools: [''],
     });
   }
 
@@ -61,6 +63,7 @@ export class SearchComponent implements OnInit {
     this.languages = this.getNamesByType('programming_languages');
     this.skills = this.getNamesByType('soft_skill');
     this.idioms = this.getNamesByType('idiom');
+    this.tools = this.getNamesByType('tools');
   }
 
   private getNamesByType(type: string): string[] {
@@ -80,6 +83,7 @@ export class SearchComponent implements OnInit {
     const lenguageControl = this.searchForm.get('lenguage');
     const skillControl = this.searchForm.get('skill');
     const idiomControl = this.searchForm.get('idiom');
+    const toolsControl = this.searchForm.get('tools');
 
     if (rolControl) {
       searchParams.rol = rolControl.value;
@@ -92,6 +96,9 @@ export class SearchComponent implements OnInit {
     }
     if (idiomControl) {
       searchParams.idiomas = idiomControl.value;
+    }
+    if (toolsControl) {
+      searchParams.tools = toolsControl.value;
     }
 
     this.userService.search(searchParams).subscribe({

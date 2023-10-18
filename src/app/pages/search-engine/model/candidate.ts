@@ -21,6 +21,7 @@ export class Candidate {
     public segundo_apellido: string,
     public segundo_nombre: string,
     public tecnologias_herramientas: string[],
+    public rol: string[],
     public telefono: string,
     public tipo_documento: string
   ) {}
@@ -31,10 +32,7 @@ export class Education {
     public fecha_fin: string,
     public fecha_inicio: string,
     public institucion: string,
-    public lenguajes_programacion: string[],
     public nivel_academico: string,
-    public rol: string,
-    public tecnologias_herramientas: string[],
     public titulo_obtenido: string
   ) {}
 }

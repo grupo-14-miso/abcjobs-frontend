@@ -15,4 +15,5 @@ export class SearchParams implements ISearchParams {
   tecnologiasHerramientas: string[] = [];
   rol: string[] = [];
   lenguajes_programacion: string[] = [];
+  tools: string[] = [];
 }

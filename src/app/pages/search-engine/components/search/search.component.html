@@ -21,14 +21,21 @@
                     <option *ngFor="let name of languages" [value]="name">{{ name }}</option>
                   </select>
                 </div>
-                <div class="form-group col-lg-3">
+                <div class="form-group col-lg-2">
+                  <label for="tools" class="mt-4">Tecnologias:</label>
+                  <select class="form-control" id="tools" formControlName="tools" multiple>
+                    <option value="" disabled selected>Seleccione...</option>
+                    <option *ngFor="let name of languages" [value]="name">{{ name }}</option>
+                  </select>
+                </div>
+                <div class="form-group col-lg-2">
                   <label for="skill" class="mt-4">Habilidades blandas:</label>
                   <select class="form-control" id="skill" formControlName="skill" multiple>
                     <option value="" disabled selected>Seleccione...</option>
                     <option *ngFor="let name of skills" [value]="name">{{ name }}</option>
                   </select>
                 </div>
-                <div class="form-group col-lg-3">
+                <div class="form-group col-lg-2">
                   <label for="idiom" class="mt-4">Idioma:</label>
                   <select class="form-control" id="idiom" formControlName="idiom" multiple>
                     <option value="" disabled selected>Seleccione...</option>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Candidate } from '../../model/candidate';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-search-list',
@@ -9,10 +10,21 @@ import { Candidate } from '../../model/candidate';
 export class SearchListComponent implements OnInit {
 
   @Input() candidates?: Candidate[];
-
+  candidateSelect?: Candidate
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openModal(candidate: Candidate){
+    this.candidateSelect = candidate
+    const myElement = document.getElementById('detailModal'); // Otra forma de obtener el elemento
+    if (myElement) {
+      const myModal = new Modal(myElement);
+      myModal.show();
+    } else {
+      console.error('El elemento no se encontró en el DOM.');
+    }
   }
 
 }
