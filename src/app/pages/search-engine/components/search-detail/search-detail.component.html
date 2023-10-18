@@ -1,4 +1,55 @@
-<p>
-  search-detail works!
-</p>
-{{candidate?.Nombre}}
+<span><b>Nombre: </b>{{candidate?.Nombre}} {{candidate?.apellido}}</span><br>
+<span><b>Documento: </b>{{candidate?.tipo_documento}} {{candidate?.documento}}</span><br>
+<span><b>Email: </b>{{candidate?.email}}</span><br>
+<span><b>Telefono: </b>{{candidate?.telefono}}</span><br>
+<span><b>Fecha de nacimiento: </b>{{candidate?.fecha_nacimiento}}</span><br>
+<span><b>Pais de nacimiento: </b>{{candidate?.pais_nacimiento}}</span><br>
+<span><b>Ciudad de nacimiento: </b>{{candidate?.ciudad_nacimiento}}</span><br>
+<span><b>Pais de residencia: </b>{{candidate?.pais_residencia}}</span><br>
+<span><b>Ciudad de residencia: </b>{{candidate?.ciudad_residencia}}</span><br>
+<span><b>Educación: </b><br>
+<table>
+  <thead>
+    <tr>
+      <th>Institución</th>
+      <th>Nivel Académico</th>
+      <th>Título Obtenido</th>
+      <th>Fecha de Inicio</th>
+      <th>Fecha de Fin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let educacionItem of candidate?.educacion">
+      <td>{{ educacionItem.institucion }}</td>
+      <td>{{ educacionItem.nivel_academico }}</td>
+      <td>{{ educacionItem.titulo_obtenido }}</td>
+      <td>{{ educacionItem.fecha_inicio }}</td>
+      <td>{{ educacionItem.fecha_fin }}</td>
+    </tr>
+  </tbody>
+</table>
+<span><b>Experiencia: </b><br>
+<table>
+  <thead>
+    <tr>
+      <th>Empresa</th>
+      <th>País</th>
+      <th>Ciudad</th>
+      <th>Cargo</th>
+      <th>Rol</th>
+      <th>Fecha de Inicio</th>
+      <th>Fecha de Fin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let experienciaItem of candidate?.experiencia">
+      <td>{{ experienciaItem.empresa }}</td>
+      <td>{{ experienciaItem.pais }}</td>
+      <td>{{ experienciaItem.ciudad }}</td>
+      <td>{{ experienciaItem.cargo }}</td>
+      <td>{{ experienciaItem.rol }}</td>
+      <td>{{ experienciaItem.fecha_inicio }}</td>
+      <td>{{ experienciaItem.fecha_fin }}</td>
+    </tr>
+  </tbody>
+</table>

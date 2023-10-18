@@ -11,7 +11,7 @@
                   <div class="card-body">
                     <img src="../../../../../assets/perfil.jpeg" alt="Imagen de perfil" class="imagen-de-perfil" />
                     <h5><b>{{ candidate.Nombre }}  {{ candidate.apellido }}</b></h5>
-                    <p class="card-text">{{ candidate.educacion[0].rol }}</p>
+                    <p class="card-text"></p>
                     <button type="button" class="btn btn-info" (click)="openModal(candidate)">Ver mas</button>
                   </div>
                 </div>
@@ -25,7 +25,7 @@
 
   <!-- Modal -->
   <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Detalle candidato</h5>
