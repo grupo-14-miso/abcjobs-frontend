@@ -15,7 +15,7 @@ constructor(private http: HttpClient) { }
 
   getAssignments(): Observable<Assignment[]> {
 
-    return this.http.get<Assignment[]>(this.apiUrl+"?status=in_progress&to_do&finished").pipe(
+    return this.http.get<Assignment[]>(this.apiUrl).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
