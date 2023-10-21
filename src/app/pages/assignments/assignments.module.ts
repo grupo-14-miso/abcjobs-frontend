@@ -5,6 +5,7 @@ import { AssignmentsRoutingModule } from './assignments-routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AssignmentService } from './services/assignment.service';
+import { AssignmentTestComponent } from './components/assignment-test/assignment-test.component';
 
 @NgModule({
   imports: [
@@ -13,8 +14,8 @@ import { AssignmentService } from './services/assignment.service';
     ReactiveFormsModule,
     RouterModule,
   ],
-  declarations: [AssignmentListComponent],
-  exports: [AssignmentListComponent],
+  declarations: [AssignmentListComponent, AssignmentTestComponent],
+  exports: [AssignmentListComponent, AssignmentTestComponent],
   providers: [AssignmentService],
 
 

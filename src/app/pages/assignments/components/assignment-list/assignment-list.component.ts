@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Assignment } from '../../model/assignment';
 import { PreloaderService } from 'src/app/core/template/services/preloader.service';
 import { AssignmentService } from '../../services/assignment.service';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-assignment-list',
@@ -16,6 +17,7 @@ export class AssignmentListComponent implements OnInit {
   ) { }
 
   assignments: Assignment[] = [];
+  assignment?: Assignment;
 
   ngOnInit() {
     this.getAssignments()
@@ -24,6 +26,14 @@ export class AssignmentListComponent implements OnInit {
   start(assignment: Assignment, indice: number) {
     if (assignment != null) {
       console.log(assignment)
+      this.assignment = assignment
+      const myElement = document.getElementById('testModal');
+      if (myElement) {
+        const myModal = new Modal(myElement);
+        myModal.show();
+      } else {
+        console.error('El elemento no se encontró en el DOM.');
+      }
     }
   }
 
