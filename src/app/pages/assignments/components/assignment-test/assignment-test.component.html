@@ -1,0 +1,35 @@
+
+<form [formGroup]="questionForm" (ngSubmit)="!questionForm.invalid && send(i_question, assignment?.assignment_id)">
+    <div class="text-right">
+      <small>Pregunta {{getQuestionNumber()}} de {{assignment?.questions?.length}}</small>
+    </div>
+    <h4 class="mt-4">{{getQuestionNumber()}}. {{getQuestion(i_question).description}}</h4>
+    <div class="form-check mt-4">
+      <input class="form-check-input" type="radio" [formControlName]="'selected_answer'" id="'answerA" value="a">
+      <label class="form-check-label" for="answerA">
+        {{ getAnswerOption(i_question, 'a').value }}
+      </label>
+    </div>
+    <div class="form-check mt-4">
+      <input class="form-check-input" type="radio" [formControlName]="'selected_answer'" id="'answerB" value="b">
+      <label class="form-check-label" for="answerB">
+        {{ getAnswerOption(i_question, 'b').value }}
+      </label>
+    </div>
+    <div class="form-check mt-4">
+      <input class="form-check-input" type="radio" [formControlName]="'selected_answer'" id="'answerC" value="c">
+      <label class="form-check-label" for="answerC">
+        {{ getAnswerOption(i_question, 'c').value }}
+      </label>
+    </div>
+    <div class="form-check mt-4">
+      <input class="form-check-input" type="radio" [formControlName]="'selected_answer'" id="'answerD" value="d">
+      <label class="form-check-label" for="answerD">
+        {{ getAnswerOption(i_question, 'd').value }}
+      </label>
+    </div>
+    <div class="text-right mt-4">
+      <button type="submit" class="btn btn-primary">{{text_boton}}</button>
+    </div>
+
+</form>

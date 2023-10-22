@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SearchComponent } from './components/search/search.component';
+import { AssignmentListComponent } from './components/assignment-list/assignment-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SearchComponent,
+    component: AssignmentListComponent,
   },
 
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class SearchEngineRoutingModule { }
+export class AssignmentsRoutingModule { }

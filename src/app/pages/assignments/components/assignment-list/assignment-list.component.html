@@ -1,0 +1,70 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="bs-component">
+        <div class="card bg-light mb-3 mt-4">
+          <div class="card-body">
+            <h4 class="card-title">Listado de pruebas programadas</h4>
+            <div class="row">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Tipo de prueba</th>
+                    <th scope="col">Prueba</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let assignment of assignments; index as i">
+                    <td> {{assignment.rol}}</td>
+                    <td> {{assignment.type}}</td>
+                    <td> {{assignment.focus}}</td>
+                    <td> {{assignment.status}}</td>
+                    <td>
+                      <button type="button" class="btn btn-link" *ngIf="assignment.status != 'finished'" (click)="start(assignment, i)">Iniciar</button>
+                      <button type="button" class="btn btn-link" *ngIf="assignment.status == 'finished'" (click)="result(assignment, i)">Resultados</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Modal test-->
+ <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Prueba técnica en {{assignment?.focus}}</h5>
+      </div>
+      <div class="modal-body">
+        <app-assignment-test [assignment]="assignment"></app-assignment-test>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal result-->
+<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Prueba técnica en {{assignment?.focus}}</h5>
+      </div>
+      <div class="modal-body">
+        <app-assignment-result [assignment]="assignment"></app-assignment-result>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

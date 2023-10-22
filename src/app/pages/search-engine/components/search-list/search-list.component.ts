@@ -18,7 +18,7 @@ export class SearchListComponent implements OnInit {
 
   openModal(candidate: Candidate){
     this.candidateSelect = candidate
-    const myElement = document.getElementById('detailModal'); // Otra forma de obtener el elemento
+    const myElement = document.getElementById('detailModal');
     if (myElement) {
       const myModal = new Modal(myElement);
       myModal.show();
