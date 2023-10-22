@@ -12,8 +12,8 @@ import { AssignmentService } from '../../services/assignment.service';
 export class AssignmentTestComponent implements OnInit {
 
   @Input() assignment?: Assignment;
-  questions: Question[] = []
   i_question : number = 0;
+  text_boton : string = "Siguiente";
 
   questionForm!: FormGroup;
   answerOptions: { key: string, value: string }[] = [];
@@ -65,6 +65,9 @@ export class AssignmentTestComponent implements OnInit {
 
   getQuestionNumber(): number {
     var n_question = this.i_question + 1;
+    if(n_question == this.assignment?.questions.length){
+      this.text_boton = "Finalizar y enviar"
+    }
     return n_question
   }
 
@@ -80,19 +83,31 @@ export class AssignmentTestComponent implements OnInit {
     question.selected_answer = selected_answer
     console.log(question)
     this.preloaderService.showPreloader();
+      this.assignmentService.saveQuestion(assignment_id, question).subscribe({
+        next: (data) => {
+          console.log(data)
+          setTimeout(() => {
+            var n_question = this.i_question + 1;
+            if(n_question == this.assignment?.questions.length){
+              this.assignmentService.finishTest(assignment_id).subscribe({
+                next: (data) => {
+                  console.log(data)
 
-    this.assignmentService.saveQuestion(assignment_id, question).subscribe({
-      next: (data) => {
-        console.log(data)
-        setTimeout(() => {
-          this.preloaderService.hidePreloader();
-          this.i_question = this.i_question+1;
-        }, 1000);
-      },
-      error: (error) => {
-        console.error(error);
-      }
-    });
+                },
+                error: (error) => {
+                  console.error(error);
+                }
+              });
+            }else{
+              this.i_question = this.i_question+1;
+              this.preloaderService.hidePreloader();
+            }
+          }, 1000);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
     }
 
   }

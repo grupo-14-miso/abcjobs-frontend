@@ -24,7 +24,7 @@
                     <td> {{assignment.status}}</td>
                     <td>
                       <button type="button" class="btn btn-link" *ngIf="assignment.status != 'finished'" (click)="start(assignment, i)">Iniciar</button>
-                      <button type="button" class="btn btn-link" *ngIf="assignment.status == 'finished'">Resultados</button>
+                      <button type="button" class="btn btn-link" *ngIf="assignment.status == 'finished'" (click)="result(assignment, i)">Resultados</button>
                     </td>
                   </tr>
                 </tbody>
@@ -37,7 +37,7 @@
   </div>
 </div>
 
- <!-- Modal -->
+ <!-- Modal test-->
  <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -53,3 +53,21 @@
     </div>
   </div>
 </div>
+
+<!-- Modal result-->
+<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Prueba técnica en {{assignment?.focus}}</h5>
+      </div>
+      <div class="modal-body">
+        <app-assignment-result [assignment]="assignment"></app-assignment-result>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

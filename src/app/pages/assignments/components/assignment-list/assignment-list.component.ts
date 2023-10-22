@@ -56,4 +56,23 @@ export class AssignmentListComponent implements OnInit {
     });
   }
 
+  result(assignment: Assignment, indice: number) {
+    this.preloaderService.showPreloader();
+    if (assignment != null) {
+      console.log(assignment)
+      this.assignment = assignment
+
+      setTimeout(() => {
+        this.preloaderService.hidePreloader();
+        const myElement = document.getElementById('resultModal');
+        if (myElement) {
+          const myModal = new Modal(myElement);
+          myModal.show();
+        } else {
+          console.error('El elemento no se encontró en el DOM.');
+        }
+      }, 1000);
+    }
+  }
+
 }
