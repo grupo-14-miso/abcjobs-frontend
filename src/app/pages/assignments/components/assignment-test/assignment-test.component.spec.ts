@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { AssignmentTestComponent } from './assignment-test.component';
+import { FormBuilder } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AssignmentTestComponent', () => {
   let component: AssignmentTestComponent;
@@ -11,7 +13,10 @@ describe('AssignmentTestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssignmentTestComponent ]
+      declarations: [ AssignmentTestComponent ],
+      providers: [FormBuilder],
+      imports: [HttpClientModule],
+
     })
     .compileComponents();
   }));

@@ -2,11 +2,13 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { AssignmentService } from './assignment.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('Service: Assignment', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AssignmentService]
+      imports: [HttpClientModule],
+      providers: [AssignmentService],
     });
   });
 
