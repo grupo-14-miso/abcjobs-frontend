@@ -14,6 +14,7 @@ export class Question {
   constructor(
     public answers: Answer[],
     public correct_answer: string[],
+    public selected_answer: string[],
     public description: string
   ){}
 }

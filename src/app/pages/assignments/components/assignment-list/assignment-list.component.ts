@@ -24,16 +24,21 @@ export class AssignmentListComponent implements OnInit {
   }
 
   start(assignment: Assignment, indice: number) {
+    this.preloaderService.showPreloader();
     if (assignment != null) {
       console.log(assignment)
       this.assignment = assignment
-      const myElement = document.getElementById('testModal');
-      if (myElement) {
-        const myModal = new Modal(myElement);
-        myModal.show();
-      } else {
-        console.error('El elemento no se encontró en el DOM.');
-      }
+
+      setTimeout(() => {
+        this.preloaderService.hidePreloader();
+        const myElement = document.getElementById('testModal');
+        if (myElement) {
+          const myModal = new Modal(myElement);
+          myModal.show();
+        } else {
+          console.error('El elemento no se encontró en el DOM.');
+        }
+      }, 1000);
     }
   }
 
@@ -41,6 +46,7 @@ export class AssignmentListComponent implements OnInit {
     this.preloaderService.showPreloader();
     this.assignmentService.getAssignments().subscribe({
       next: (data) => {
+        console.log(data)
         this.assignments = data;
         this.preloaderService.hidePreloader();
       },
