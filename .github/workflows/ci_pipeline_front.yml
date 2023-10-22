@@ -21,7 +21,7 @@ jobs:
     - name: Build
       run: npm run build
     - name: Test
-      run: npm test
+      run: ng test --code-coverage
     - name: Deploy to GCS
       env:
         GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
