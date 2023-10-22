@@ -3,6 +3,7 @@ import { Assignment } from '../../model/assignment';
 import { PreloaderService } from 'src/app/core/template/services/preloader.service';
 import { AssignmentService } from '../../services/assignment.service';
 import { Modal } from 'bootstrap';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-assignment-list',
@@ -24,7 +25,17 @@ export class AssignmentListComponent implements OnInit {
   }
 
   start(assignment: Assignment, indice: number) {
-    this.preloaderService.showPreloader();
+    Swal.fire({
+      title: '¿Esta seguro de iniciar la prueba?',
+      text: 'Una vez iniciada no se puede cancelar',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.preloaderService.showPreloader();
     if (assignment != null) {
       console.log(assignment)
       this.assignment = assignment
@@ -40,6 +51,10 @@ export class AssignmentListComponent implements OnInit {
         }
       }, 1000);
     }
+      }
+    })
+
+
   }
 
   getAssignments() {

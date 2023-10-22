@@ -3,6 +3,8 @@ import { Answer, Assignment, Question, } from '../../model/assignment';
 import { FormBuilder, FormGroup, Validators, FormsModule} from '@angular/forms';
 import { PreloaderService } from 'src/app/core/template/services/preloader.service';
 import { AssignmentService } from '../../services/assignment.service';
+import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignment-test',
@@ -22,7 +24,9 @@ export class AssignmentTestComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private preloaderService: PreloaderService,
-    private assignmentService: AssignmentService
+    private assignmentService: AssignmentService,
+    private router: Router
+
     ) {
       this.formBuilderGroup();
      }
@@ -80,6 +84,8 @@ export class AssignmentTestComponent implements OnInit {
     if(selected_answer_control){
       selected_answer.push(selected_answer_control.value)
     }
+    this.questionForm.reset();
+
     question.selected_answer = selected_answer
     console.log(question)
     this.preloaderService.showPreloader();
@@ -92,7 +98,17 @@ export class AssignmentTestComponent implements OnInit {
               this.assignmentService.finishTest(assignment_id).subscribe({
                 next: (data) => {
                   console.log(data)
-
+                  this.preloaderService.hidePreloader();
+                  Swal.fire({
+                    title: 'Prueba finalizada con exito',
+                    text: 'A continuación puede acceder a los resultados',
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      location.reload();
+                    }
+                  })
                 },
                 error: (error) => {
                   console.error(error);
