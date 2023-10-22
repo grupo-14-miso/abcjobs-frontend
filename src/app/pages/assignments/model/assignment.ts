@@ -27,3 +27,10 @@ export class Answer {
     public d?: string
   ){}
 }
+
+export class Notification {
+  constructor(
+    public message: string,
+  ){}
+}
+

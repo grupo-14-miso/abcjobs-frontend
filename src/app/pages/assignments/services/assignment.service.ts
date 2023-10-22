@@ -18,14 +18,14 @@ constructor(private http: HttpClient) { }
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
-  saveQuestion(question_id: number, question: Question): Observable<any> {
-    return this.http.post<any>(this.apiUrl+'/'+question_id, question).pipe(
+  saveQuestion(question_id: number, question: Question): Observable<Notification> {
+    return this.http.post<Notification>(this.apiUrl+'/'+question_id, question).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
 
-  finishTest(question_id: number): Observable<any> {
-    return this.http.post<any>(this.apiUrl+'/questionnaire/'+question_id, null).pipe(
+  finishTest(question_id: number): Observable<Notification> {
+    return this.http.post<Notification>(this.apiUrl+'/questionnaire/'+question_id, null).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
