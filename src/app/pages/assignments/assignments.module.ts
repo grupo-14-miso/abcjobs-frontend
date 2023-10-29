@@ -7,18 +7,18 @@ import { RouterModule } from '@angular/router';
 import { AssignmentService } from './services/assignment.service';
 import { AssignmentTestComponent } from './components/assignment-test/assignment-test.component';
 import { AssignmentResultComponent } from './components/assignment-result/assignment-result.component';
+import { CoreModule } from "../../core/core.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AssignmentsRoutingModule,
-    ReactiveFormsModule,
-    RouterModule,
-  ],
-  declarations: [AssignmentListComponent, AssignmentTestComponent, AssignmentResultComponent],
-  exports: [AssignmentListComponent, AssignmentTestComponent, AssignmentResultComponent],
-  providers: [AssignmentService],
-
-
+    declarations: [AssignmentListComponent, AssignmentTestComponent, AssignmentResultComponent],
+    exports: [AssignmentListComponent, AssignmentTestComponent, AssignmentResultComponent],
+    providers: [AssignmentService],
+    imports: [
+        CommonModule,
+        AssignmentsRoutingModule,
+        ReactiveFormsModule,
+        RouterModule,
+        CoreModule
+    ]
 })
 export class AssignmentsModule { }

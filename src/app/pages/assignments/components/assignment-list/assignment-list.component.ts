@@ -26,7 +26,7 @@ export class AssignmentListComponent implements OnInit {
 
   start(assignment: Assignment, indice: number) {
     Swal.fire({
-      title: '¿Esta seguro de iniciar la prueba?',
+      title: '¿Esta seguro de iniciar la prueba?' ,
       text: 'Una vez iniciada no se puede cancelar',
       icon: 'warning',
       showCancelButton: true,
