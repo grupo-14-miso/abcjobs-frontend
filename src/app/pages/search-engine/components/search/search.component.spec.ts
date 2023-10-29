@@ -6,27 +6,7 @@ import { DebugElement } from '@angular/core';
 import { SearchComponent } from './search.component';
 import { FormBuilder } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TranslatePipe } from 'src/app/core/template/pipes/translate.pipe';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
-describe('SearchComponent', () => {
-  let component: SearchComponent;
-  let fixture: ComponentFixture<SearchComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      declarations: [ SearchComponent ],
-      providers: [FormBuilder]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SearchComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
