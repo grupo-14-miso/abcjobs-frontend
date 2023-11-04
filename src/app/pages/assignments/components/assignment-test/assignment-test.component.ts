@@ -5,6 +5,7 @@ import { PreloaderService } from 'src/app/core/template/services/preloader.servi
 import { AssignmentService } from '../../services/assignment.service';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
+import { LanguageService } from 'src/app/core/template/services/language.service';
 
 @Component({
   selector: 'app-assignment-test',
@@ -25,7 +26,7 @@ export class AssignmentTestComponent implements OnInit {
     private formBuilder: FormBuilder,
     private preloaderService: PreloaderService,
     private assignmentService: AssignmentService,
-    private router: Router
+    private languageService: LanguageService,
 
     ) {
       this.formBuilderGroup();
@@ -99,9 +100,15 @@ export class AssignmentTestComponent implements OnInit {
                 next: (data) => {
                   console.log(data)
                   this.preloaderService.hidePreloader();
+                  var title = 'Prueba finalizada con exito';
+                  var text = 'A continuación puede acceder a los resultados'
+                  if(this.languageService.currentLanguage == "en"){
+                    title = 'Test completed successfully'
+                    text = 'Below you can access the results'
+                  }
                   Swal.fire({
-                    title: 'Prueba finalizada con exito',
-                    text: 'A continuación puede acceder a los resultados',
+                    title: title,
+                    text: text,
                     icon: 'success',
                     confirmButtonColor: '#3085d6',
                   }).then((result) => {

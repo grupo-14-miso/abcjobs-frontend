@@ -11,7 +11,7 @@
                   <div class="card-body">
                     <img src="../../../../../assets/perfil.jpeg" alt="Imagen de perfil" class="imagen-de-perfil" />
                     <h5><b>{{ candidate.Nombre }}  {{ candidate.apellido }}</b></h5>
-                    <p class="card-text"></p>
+                    <p class="card-text">{{ candidate.rol }}</p>
                     <button type="button" class="btn btn-info" (click)="openModal(candidate)">{{ 'Ver mas' | translate | async }}</button>
                   </div>
                 </div>

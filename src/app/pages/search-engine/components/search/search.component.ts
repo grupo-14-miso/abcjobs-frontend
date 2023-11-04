@@ -112,4 +112,9 @@ export class SearchComponent implements OnInit {
       }
     });
   }
+  clear() {
+    this.preloaderService.showPreloader();
+    this.searchForm.reset();
+    this.preloaderService.hidePreloader();
+  }
 }

@@ -43,10 +43,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{ 'Prueba técnica en '+assignment?.focus | translate | async }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <app-assignment-test [assignment]="assignment"></app-assignment-test>
       </div>
+
     </div>
   </div>
 </div>

@@ -8,6 +8,7 @@ import { AssignmentService } from './services/assignment.service';
 import { AssignmentTestComponent } from './components/assignment-test/assignment-test.component';
 import { AssignmentResultComponent } from './components/assignment-result/assignment-result.component';
 import { CoreModule } from "../../core/core.module";
+import { TranslatePipe } from 'src/app/core/template/pipes/translate.pipe';
 
 @NgModule({
     declarations: [AssignmentListComponent, AssignmentTestComponent, AssignmentResultComponent],
