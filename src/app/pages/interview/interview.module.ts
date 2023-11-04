@@ -3,16 +3,20 @@ import { CommonModule } from '@angular/common';
 import { InterviewListComponent } from './components/interview-list/interview-list.component';
 import { InterviewRoutingModule } from './interview-routing';
 import { CoreModule } from "../../core/core.module";
+import { InterviewCreateComponent } from './components/interview-create/interview-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
-        InterviewListComponent
+        InterviewListComponent,
+        InterviewCreateComponent
     ],
-    exports: [InterviewListComponent],
+    exports: [InterviewListComponent, InterviewCreateComponent],
     imports: [
         CommonModule,
         InterviewRoutingModule,
-        CoreModule
+        CoreModule,
+        ReactiveFormsModule,
     ]
 })
 export class InterviewModule { }

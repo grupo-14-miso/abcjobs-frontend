@@ -19,7 +19,6 @@ export class SearchSelectComponent implements OnInit {
 
   @Input() candidate?: Candidate;
 
-
   selectForm!: FormGroup;
   companies: Company[] = [];
   offers: Offer[] = [];

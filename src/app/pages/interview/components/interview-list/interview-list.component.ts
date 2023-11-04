@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Interview } from '../../model/interview';
 import { PreloaderService } from 'src/app/core/template/services/preloader.service';
 import { InterviewService } from '../../services/interview.service';
+import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-interview-list',
@@ -33,6 +34,16 @@ export class InterviewListComponent implements OnInit {
         console.error(error);
       }
     });
+  }
+
+  createModal(){
+    const myElement = document.getElementById('createModal');
+    if (myElement) {
+      const myModal = new Modal(myElement);
+      myModal.show();
+    } else {
+      console.error('El elemento no se encontró en el DOM.');
+    }
   }
 
 }
