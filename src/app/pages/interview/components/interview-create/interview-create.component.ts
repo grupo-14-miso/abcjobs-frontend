@@ -118,7 +118,7 @@ export class InterviewCreateComponent implements OnInit {
             icon: 'success',
             confirmButtonColor: '#3085d6',
           }).then((result) => {
-            location.reload();
+
           })
 
         },
