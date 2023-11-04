@@ -14,17 +14,14 @@ import { LanguageService } from 'src/app/core/template/services/language.service
 })
 export class AssignmentListComponent implements OnInit {
 
-  @ViewChild('testModal', { static: false }) testModal!: ElementRef;
-
+  assignments: Assignment[] = [];
+  assignment?: Assignment;
 
   constructor(
     private preloaderService: PreloaderService,
     private assignmentService: AssignmentService,
     private languageService: LanguageService,
   ) {   }
-
-  assignments: Assignment[] = [];
-  assignment?: Assignment;
 
   ngOnInit() {
     this.getAssignments()
