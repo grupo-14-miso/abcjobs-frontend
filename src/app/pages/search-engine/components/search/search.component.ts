@@ -12,8 +12,9 @@ import { SearchParams } from '../../model/search';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  searchForm!: FormGroup;
+
   profiles: Profile[] = [];
-  candidates?: Candidate[];
 
   roles: string[] = [];
   languages: string[] = [];
@@ -21,7 +22,7 @@ export class SearchComponent implements OnInit {
   idioms: string[] = [];
   tools: string[] = [];
 
-  searchForm!: FormGroup;
+  candidates?: Candidate[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,7 +32,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.formBuilderGroup();
-    this.getListProfiles();
+    this.getProfiles();
   }
 
   formBuilderGroup() {
@@ -44,12 +45,12 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  getListProfiles() {
+  getProfiles() {
     this.preloaderService.showPreloader();
     this.userService.getProfiles().subscribe({
       next: (data) => {
         this.profiles = data;
-        this.filterTypes();
+        this.filterProfilesByType();
         this.preloaderService.hidePreloader();
       },
       error: (error) => {
@@ -58,7 +59,7 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  filterTypes() {
+  filterProfilesByType() {
     this.roles = this.getNamesByType('Rol');
     this.languages = this.getNamesByType('programming_languages');
     this.skills = this.getNamesByType('soft_skill');
@@ -66,7 +67,7 @@ export class SearchComponent implements OnInit {
     this.tools = this.getNamesByType('tools');
   }
 
-  private getNamesByType(type: string): string[] {
+  getNamesByType(type: string): string[] {
     return this.profiles
       .filter((profile) => profile.type === type)
       .map((profile) => profile.names)
