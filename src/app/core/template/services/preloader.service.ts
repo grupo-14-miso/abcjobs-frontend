@@ -10,11 +10,11 @@ export class PreloaderService {
   public isLoading$ = this.isLoading.asObservable();
 
   showPreloader() {
-    this.isLoading.next(false); // Ocultar el preloader, estableciendo "false"
+    this.isLoading.next(false);
   }
 
   hidePreloader() {
-    this.isLoading.next(true); // Mostrar el preloader, estableciendo "true"
+    this.isLoading.next(true);
   }
 
 }

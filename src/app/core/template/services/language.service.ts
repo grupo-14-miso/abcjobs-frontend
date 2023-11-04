@@ -32,4 +32,8 @@ export class LanguageService {
       queryParamsHandling: 'merge'
     });
   }
+
+  get currentLanguage(): string {
+    return this.selectLanguage;
+  }
 }
