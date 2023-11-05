@@ -22,9 +22,11 @@
                 <tbody>
                   <tr *ngFor="let interview of interviews; index as i">
                     <td> {{ interview.date }}</td>
-                    <td> {{ interview.id_company}}</td>
-                    <td> {{ interview.id_offer}}</td>
-                    <td> {{ interview.candidates}}</td>
+                    <td> {{ interview.candidates_details[0].company.name}}</td>
+                    <td> {{ interview.candidates_details[0].offer.name}}</td>
+                    <td>
+                      <p *ngFor="let candidate_detail of interview.candidates_details">{{ candidate_detail.candidate.Nombre + " " +candidate_detail.candidate.apellido}}</p>
+                    </td>
                     <td>
                     </td>
                   </tr>

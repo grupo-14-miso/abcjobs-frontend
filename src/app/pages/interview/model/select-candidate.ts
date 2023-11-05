@@ -1,5 +1,6 @@
 import { Candidate } from "../../search-engine/model/candidate";
 import { InterviewPreCandidate } from "./interview-pre-candidate";
+import { Key } from "./key";
 
 export class SelectCandidate {
   constructor(
@@ -9,9 +10,4 @@ export class SelectCandidate {
   ) {}
 }
 
-export class Key {
-  constructor(
-    public kind: string,
-    public id: number,
-  ) {}
-}
+

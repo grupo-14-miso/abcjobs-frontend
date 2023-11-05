@@ -19,10 +19,10 @@ export class InterviewListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.getAssignments()
+    this.getInterviews()
   }
 
-  getAssignments() {
+  getInterviews() {
     this.preloaderService.showPreloader();
     this.interviewService.getInterviews().subscribe({
       next: (data) => {

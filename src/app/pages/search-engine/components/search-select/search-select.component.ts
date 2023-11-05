@@ -77,7 +77,7 @@ export class SearchSelectComponent implements OnInit {
     var id_candidato = "";
 
     if(this.candidate){
-      id_candidato = this.candidate?.id_candidato;
+      id_candidato = this.candidate?.key.id.toString();
 
     }
     const interviewPreCandidate = new InterviewPreCandidate(
