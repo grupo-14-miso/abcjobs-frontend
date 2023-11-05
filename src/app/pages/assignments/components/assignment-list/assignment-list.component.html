@@ -18,9 +18,9 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let assignment of assignments; index as i">
-                    <td> {{ assignment.rol | translate | async }}</td>
-                    <td> {{ assignment.type| translate | async }}</td>
-                    <td> {{ assignment.focus| translate | async }}</td>
+                    <td> {{ assignment.rol }}</td>
+                    <td> {{ assignment.type}}</td>
+                    <td> {{ assignment.focus}}</td>
                     <td> {{ assignment.status| translate | async }}</td>
                     <td>
                       <button type="button" class="btn btn-link" *ngIf="assignment.status != 'finished'" (click)="start(assignment, i)">{{ 'Iniciar' | translate | async }}</button>

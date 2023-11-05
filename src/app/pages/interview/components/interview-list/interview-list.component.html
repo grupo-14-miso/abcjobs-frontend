@@ -1,0 +1,58 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="bs-component">
+        <div class="card bg-light mb-3 mt-4">
+          <div class="card-body">
+            <h4 class="card-title">{{ 'Listado de entrevistas programadas' | translate | async }}</h4>
+            <div class="row">
+              <div class="col-lg-12">
+                <button type="button" class="btn btn-primary" (click)="createModal()">{{ 'Programar' | translate | async }}</button>
+              </div>
+              <table class="table table-hover mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">{{ 'Fecha' | translate | async }}</th>
+                    <th scope="col">{{ 'Empresa' | translate | async }}</th>
+                    <th scope="col">{{ 'Oferta' | translate | async }}</th>
+                    <th scope="col">{{ 'Candidatos' | translate | async }}</th>
+                    <th scope="col">{{ 'Acción' | translate | async }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let interview of interviews; index as i">
+                    <td> {{ interview.date }}</td>
+                    <td> {{ interview.candidates_details[0].company.name}}</td>
+                    <td> {{ interview.candidates_details[0].offer.name}}</td>
+                    <td>
+                      <p *ngFor="let candidate_detail of interview.candidates_details">{{ candidate_detail.candidate.Nombre + " " +candidate_detail.candidate.apellido}}</p>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- create Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ 'Programar entrevista' | translate | async }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-interview-create></app-interview-create>
+      </div>
+    </div>
+  </div>
+</div>

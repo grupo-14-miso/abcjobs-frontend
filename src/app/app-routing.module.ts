@@ -14,6 +14,10 @@ const routes: Routes = [
     path:  'assignments',
     loadChildren: () => import('./pages/assignments/assignments.module').then(m => m.AssignmentsModule)
   },
+  {
+    path:  'interviews',
+    loadChildren: () => import('./pages/interview/interview.module').then(m => m.InterviewModule)
+  },
 ];
 
 @NgModule({
