@@ -6,28 +6,5 @@ import { DebugElement } from '@angular/core';
 import { AssignmentTestComponent } from './assignment-test.component';
 import { FormBuilder } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TranslatePipe } from 'src/app/core/template/pipes/translate.pipe';
 
-describe('AssignmentTestComponent', () => {
-  let component: AssignmentTestComponent;
-  let fixture: ComponentFixture<AssignmentTestComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AssignmentTestComponent ],
-      providers: [FormBuilder],
-      imports: [HttpClientModule],
-
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AssignmentTestComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});

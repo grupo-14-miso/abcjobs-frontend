@@ -1,3 +1,5 @@
+import { Key } from "../../interview/model/key";
+
 export class Candidate {
   constructor(
     public Nombre: string,
@@ -23,7 +25,8 @@ export class Candidate {
     public tecnologias_herramientas: string[],
     public rol: string[],
     public telefono: string,
-    public tipo_documento: string
+    public tipo_documento: string,
+    public key: Key,
   ) {}
 }
 

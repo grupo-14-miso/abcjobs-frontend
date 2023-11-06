@@ -3,4 +3,16 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <div class="col-lg-2 ml-auto d-flex align-items-center">
+    <img *ngIf="targetLanguage == 'es'" src="../../../../../assets/es.png" class="mr-2" alt="Español"/>
+    <img *ngIf="targetLanguage == 'en'" src="../../../../../assets/en.png" class="mr-2" alt="English"/>
+    <select class="form-control" (change)="onChange($event)">
+      <option value="es">
+        {{ 'Español' | translate | async }}
+      </option>
+      <option value="en">
+        {{ 'English' | translate | async }}
+      </option>
+    </select>
+  </div>
 </nav>

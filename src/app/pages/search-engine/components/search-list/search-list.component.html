@@ -2,17 +2,19 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="bs-component">
-        <div class="card bg-light mb-3 mt-4">
+        <div class="card bg-light col-md-12">
           <div class="card-body">
-            <h4 class="card-title">Listado de candidatos</h4>
+            <h4 class="card-title">{{ 'Listado de candidatos' | translate | async }}</h4>
             <div class="row text-center">
               <div class="col-md-3" *ngFor="let candidate of candidates">
                 <div class="card border-primary mb-3" style="max-width: 20rem;">
                   <div class="card-body">
                     <img src="../../../../../assets/perfil.jpeg" alt="Imagen de perfil" class="imagen-de-perfil" />
                     <h5><b>{{ candidate.Nombre }}  {{ candidate.apellido }}</b></h5>
-                    <p class="card-text"></p>
-                    <button type="button" class="btn btn-info" (click)="openModal(candidate)">Ver mas</button>
+                    <p class="card-text">{{ candidate.rol }}</p>
+                    <button type="button" class="btn btn-info" (click)="detailModal(candidate)">{{ 'Ver mas' | translate | async }}</button>
+                    <span style="margin: 0 5px;"></span>
+                    <button type="button" class="btn btn-success" (click)="selectModal(candidate)">{{ 'Seleccionar' | translate | async }}</button>
                   </div>
                 </div>
               </div>
@@ -22,24 +24,41 @@
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Detalle candidato</h5>
-          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <app-search-detail [candidate]="candidateSelect"></app-search-detail>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+ <!-- detail Modal -->
+ <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ 'Detalle candidato' | translate | async }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-search-detail [candidate]="candidateSelect"></app-search-detail>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'Cerrar' | translate | async }}</button>
       </div>
     </div>
   </div>
 </div>
+
+  <!-- select Modal -->
+  <div class="modal fade" id="selectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ 'Selección candidato' | translate | async }}</h5>
+          <button #botonCerrarSelectModal type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-search-select [candidate]="candidateSelect"></app-search-select>
+        </div>
+      </div>
+    </div>
+  </div>

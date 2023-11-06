@@ -7,22 +7,25 @@ import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { SearchDetailComponent } from './components/search-detail/search-detail.component';
+import { CoreModule } from "../../core/core.module";
+import { SearchSelectComponent } from './components/search-select/search-select.component';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SearchEngineRoutingModule,
-    ReactiveFormsModule,
-    RouterModule,
-  ],
-  declarations: [
-    SearchComponent,
-    SearchListComponent,
-    SearchDetailComponent
-  ],
-  exports: [SearchComponent, SearchListComponent, SearchDetailComponent],
-  providers: [UserService],
-
+    declarations: [
+        SearchComponent,
+        SearchListComponent,
+        SearchDetailComponent,
+        SearchSelectComponent
+    ],
+    exports: [SearchComponent, SearchListComponent, SearchDetailComponent, SearchSelectComponent],
+    providers: [UserService],
+    imports: [
+        CommonModule,
+        SearchEngineRoutingModule,
+        ReactiveFormsModule,
+        RouterModule,
+        CoreModule
+    ]
 })
 export class SearchEngineModule { }

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Assignment } from '../../model/assignment';
 import { PreloaderService } from 'src/app/core/template/services/preloader.service';
 import { AssignmentService } from '../../services/assignment.service';
 import { Modal } from 'bootstrap';
 import Swal from 'sweetalert2'
+import { TranslatePipe } from 'src/app/core/template/pipes/translate.pipe';
+import { LanguageService } from 'src/app/core/template/services/language.service';
 
 @Component({
   selector: 'app-assignment-list',
@@ -12,25 +14,33 @@ import Swal from 'sweetalert2'
 })
 export class AssignmentListComponent implements OnInit {
 
-  constructor(
-    private preloaderService: PreloaderService,
-    private assignmentService: AssignmentService
-  ) { }
-
   assignments: Assignment[] = [];
   assignment?: Assignment;
+
+  constructor(
+    private preloaderService: PreloaderService,
+    private assignmentService: AssignmentService,
+    private languageService: LanguageService,
+  ) {   }
 
   ngOnInit() {
     this.getAssignments()
   }
 
   start(assignment: Assignment, indice: number) {
+    var title = '¿Esta seguro de iniciar la prueba?';
+    var text = 'Una vez iniciada no se puede cancelar'
+    if(this.languageService.currentLanguage == "en"){
+      title = 'Are you sure to start the test?'
+      text = 'Once started it cannot be canceled'
+    }
+
     Swal.fire({
-      title: '¿Esta seguro de iniciar la prueba?',
-      text: 'Una vez iniciada no se puede cancelar',
+      title: title ,
+      text: text,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Aceptar',
+      confirmButtonText: 'Ok',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
     }).then((result) => {

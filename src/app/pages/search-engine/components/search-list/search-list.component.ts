@@ -16,9 +16,20 @@ export class SearchListComponent implements OnInit {
   ngOnInit() {
   }
 
-  openModal(candidate: Candidate){
+  detailModal(candidate: Candidate){
     this.candidateSelect = candidate
     const myElement = document.getElementById('detailModal');
+    if (myElement) {
+      const myModal = new Modal(myElement);
+      myModal.show();
+    } else {
+      console.error('El elemento no se encontró en el DOM.');
+    }
+  }
+
+  selectModal(candidate: Candidate){
+    this.candidateSelect = candidate
+    const myElement = document.getElementById('selectModal');
     if (myElement) {
       const myModal = new Modal(myElement);
       myModal.show();
