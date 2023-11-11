@@ -1,11 +1,65 @@
 <div class="row">
   <div class="col-lg-12 col-sm-12">
     <div class="jumbotron">
-      <h1 class="display-4">{{ 'Muy pronto' | translate | async }}</h1>
-      <p class="lead">{{ 'ABC Jobs' | translate | async }}</p>
+      <h1 class="display-5">{{ 'Bienvenido, ' | translate | async }} ABC Jobs</h1>
       <hr class="my-4">
-      <p>{{ 'Interesados en oportunidades laborales en TI y mano de obra calificada' | translate | async }} </p>
-      <span>{{ 'ABC Jobs app is running!' | translate | async }}</span>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+              <div class="card-type-user">
+                <div class="card-img-type-user">
+                  <div class="img-type-user">
+                      <i class="fas fa-users fa-5x icon-type-user"></i>
+                  </div>
+                </div>
+                <div class="card-text-type-user">
+                  <label class="lead">{{ 'Interesado en oportunidades laborales TI' | translate | async }}</label>
+                </div>
+              </div>
+              <button class="btn btn-lg btn-primary col-md-12 mt-4" type="button">{{ 'Aspirantes ' | translate | async }}</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+              <div class="card-type-user">
+                <div class="card-img-type-user">
+                  <div class="img-type-user">
+                      <i class="fas fa-users fa-5x icon-type-user"></i>
+                  </div>
+                </div>
+                <div class="card-text-type-user">
+                  <label class="lead">{{ 'Interesado en mano de obra TI' | translate | async }}</label>
+                </div>
+              </div>
+              <button class="btn btn-lg btn-primary col-md-12 mt-4" type="button">{{ 'Empresas ' | translate | async }}</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+              <div class="card-type-user">
+                <div class="card-img-type-user">
+                  <div class="img-type-user">
+                      <i class="fas fa-users fa-5x icon-type-user"></i>
+                  </div>
+                </div>
+                <div class="card-text-type-user">
+                  <label class="lead">{{ 'Funcionarios ' | translate | async }} ABC Jobs</label>
+                </div>
+              </div>
+              <button class="btn btn-lg btn-primary col-md-12 mt-4" type="button">ABC Jobs</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
