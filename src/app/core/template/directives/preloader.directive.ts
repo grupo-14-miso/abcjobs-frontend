@@ -11,7 +11,6 @@ export class PreloaderDirective {
     private preloaderService: PreloaderService
   ) {
     this.preloaderService.isLoading$.subscribe((isLoading) => {
-      console.log(isLoading)
       if (isLoading) {
         this.viewContainer.clear();
       } else {

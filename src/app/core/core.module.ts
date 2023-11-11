@@ -6,7 +6,6 @@ import { MainComponent } from './template/components/main/main.component';
 import { FooterComponent } from './template/components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { PreloaderDirective } from './template/directives/preloader.directive';
-import { PreloaderService } from './template/services/preloader.service';
 import { TranslationService } from './template/services/translation.service';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from './template/pipes/translate.pipe';
@@ -19,7 +18,7 @@ import { LanguageService } from './template/services/language.service';
     RouterModule,
     FormsModule
   ],
-  providers:[PreloaderService, TranslationService, LanguageService],
+  providers:[TranslationService, LanguageService],
   exports: [TemplateComponent, PreloaderDirective, TranslatePipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
