@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslationService } from '../../services/translation.service';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
@@ -13,10 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor(private languageService: LanguageService) {
   }
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
 
   onChange(event: Event): void {
     const targetLanguage = (event.target as HTMLSelectElement).value;

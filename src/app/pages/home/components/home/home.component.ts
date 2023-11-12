@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Translate from "@google-cloud/translate";
-import { TranslationService } from '../../../core/template/services/translation.service';
+import { TranslationService } from '../../../../core/template/services/translation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,14 @@ import { TranslationService } from '../../../core/template/services/translation.
 })
 export class HomeComponent implements OnInit {
 
-  constructor()  {
+  constructor(private router: Router)  {
   }
 
   ngOnInit() {
+  }
+
+  users() {
+    this.router.navigate(['/users/create']);
   }
 
 }

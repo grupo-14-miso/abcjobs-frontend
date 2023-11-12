@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './components/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { TranslationService } from '../../core/template/services/translation.service';
 import { CoreModule } from "../../core/core.module";
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
-    declarations: [HomeComponent],
+    declarations: [HomeComponent, LoginComponent, DashboardComponent],
     providers: [],
     imports: [
         CommonModule,
         HomeRoutingModule,
-        CoreModule
+        CoreModule,
+        ReactiveFormsModule
     ]
 })
 export class HomeModule { }

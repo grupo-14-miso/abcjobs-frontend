@@ -1,0 +1,82 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PreloaderService } from 'src/app/core/template/services/preloader.service';
+import { PublicService } from '../../services/public.service';
+import { LanguageService } from 'src/app/core/template/services/language.service';
+import Swal from 'sweetalert2';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+
+  loginForm!: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private preloaderService: PreloaderService,
+    private publicService: PublicService,
+    private languageService: LanguageService,
+    ) { }
+
+  ngOnInit() {
+    this.formBuilderGroup()
+  }
+
+  formBuilderGroup() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
+
+  login(){
+    this.preloaderService.showPreloader();
+      if (this.loginForm.valid) {
+        const emailControl = this.loginForm.get('email');
+        const passwordControl = this.loginForm.get('password');
+
+      if (emailControl && passwordControl) {
+        const loginData = {
+          email: emailControl.value,
+          password: passwordControl.value,
+          role: "Candidate",
+        };
+
+        this.publicService.login(loginData).subscribe({
+          next: (response) => {
+            console.log(response)
+            this.preloaderService.hidePreloader();
+            this.router.navigate(['/dashboard']);
+          },
+          error: (error) => {
+            this.preloaderService.hidePreloader();
+            console.error('Error login', error);
+            var title = 'Error en login';
+            var text = 'Email o password incorrectos'
+            if(this.languageService.currentLanguage == "en"){
+              title = 'Login error'
+              text = 'Incorrect email or password'
+            }
+            Swal.fire({
+              title: title,
+              text:  text,
+              icon: 'error',
+              confirmButtonColor: '#3085d6',
+            }).then((result) => {
+
+            })
+          }
+        });
+      }
+    }
+  }
+  home(){
+    this.router.navigate(['/']);
+  }
+
+}
