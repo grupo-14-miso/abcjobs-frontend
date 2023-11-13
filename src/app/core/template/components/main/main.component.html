@@ -1,8 +1,19 @@
-<div class="container preloader-container">
-  <div *appPreloader class="preloader">
-    <img src="../../../../../assets/loader.gif" alt="Cargando..." />
+<div class="row">
+  <!-- Columna para la lista de grupo -->
+  <div class="col-lg-2 col-sm-2">
+    <div class="col-lg-12 col-sm-12 list-group" *ngIf="menu">
+      <a href="#" class="list-group-item list-group-item-action">{{ 'Buscador' | translate | async }}</a>
+      <a href="#" class="list-group-item list-group-item-action">{{ 'Pruebas' | translate | async }}</a>
+      <a href="#" class="list-group-item list-group-item-action">{{ 'Entrevistas' | translate | async }}</a>
+    </div>
   </div>
-  <router-outlet>
-
-  </router-outlet>
+  <!-- Columna para el contenido principal -->
+  <div class="col-lg-10 col-sm-10">
+    <div class="container preloader-container" style="margin-left: 0 !important;">
+      <div *appPreloader class="preloader">
+        <img src="../../../../../assets/loader.gif" alt="Cargando..." />
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

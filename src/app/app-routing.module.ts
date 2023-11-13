@@ -18,6 +18,10 @@ const routes: Routes = [
     path:  'interviews',
     loadChildren: () => import('./pages/interview/interview.module').then(m => m.InterviewModule)
   },
+  {
+    path:  'users',
+    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
+  },
 ];
 
 @NgModule({
