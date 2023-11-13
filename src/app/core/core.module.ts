@@ -12,7 +12,14 @@ import { TranslatePipe } from './template/pipes/translate.pipe';
 import { LanguageService } from './template/services/language.service';
 
 @NgModule({
-  declarations: [TemplateComponent, HeaderComponent, MainComponent, FooterComponent, PreloaderDirective, TranslatePipe],
+  declarations: [
+    TemplateComponent,
+    HeaderComponent,
+    MainComponent,
+    FooterComponent,
+    PreloaderDirective,
+    TranslatePipe
+  ],
   imports: [
     CommonModule,
     RouterModule,
