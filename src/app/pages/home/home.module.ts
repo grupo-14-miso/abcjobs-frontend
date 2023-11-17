@@ -6,9 +6,10 @@ import { CoreModule } from "../../core/core.module";
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LogoupUserComponent } from './components/logoup-user/logoup-user.component';
 
 @NgModule({
-    declarations: [HomeComponent, LoginComponent, DashboardComponent],
+    declarations: [HomeComponent, LoginComponent, DashboardComponent, LogoupUserComponent],
     providers: [],
     imports: [
         CommonModule,

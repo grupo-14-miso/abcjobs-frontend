@@ -1,13 +1,39 @@
 <div class="row">
-  <!-- Columna para la lista de grupo -->
   <div class="col-lg-2 col-sm-2">
-    <div class="col-lg-12 col-sm-12 list-group" *ngIf="menu">
-      <a href="#" class="list-group-item list-group-item-action">{{ 'Buscador' | translate | async }}</a>
-      <a href="#" class="list-group-item list-group-item-action">{{ 'Pruebas' | translate | async }}</a>
-      <a href="#" class="list-group-item list-group-item-action">{{ 'Entrevistas' | translate | async }}</a>
-    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary nav-abc" *ngIf="authService.isAuthenticated()">
+      <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto flex-column">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hoja de vida</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Datos personales</a>
+                <a class="dropdown-item" href="#">Educación</a>
+                <a class="dropdown-item" href="#">Experiencia</a>
+                <a class="dropdown-item" href="#">Idioma</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Buscador
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pruebas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Entrevistas</a>
+            </li>
+          </ul>
+
+
+        </div>
+      </div>
+    </nav>
+
   </div>
-  <!-- Columna para el contenido principal -->
+
   <div class="col-lg-10 col-sm-10">
     <div class="container preloader-container" style="margin-left: 0 !important;">
       <div *appPreloader class="preloader">
