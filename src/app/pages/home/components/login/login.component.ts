@@ -50,7 +50,13 @@ export class LoginComponent implements OnInit {
         this.publicService.login(loginData).subscribe({
           next: (response) => {
             console.log(response)
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('role', response.role);
+            localStorage.setItem('name', response.name);
+            localStorage.setItem('userKey', response.key);
             this.preloaderService.hidePreloader();
+
+
             this.router.navigate(['/dashboard']);
           },
           error: (error) => {

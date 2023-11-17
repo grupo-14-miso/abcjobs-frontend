@@ -1,8 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="/">ABC Jobs</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+
   <div class="col-lg-1 ml-auto d-flex align-items-center">
     <img *ngIf="targetLanguage == 'es'" src="../../../../../assets/es.png" class="mr-2" alt="Español"/>
     <img *ngIf="targetLanguage == 'en'" src="../../../../../assets/en.png" class="mr-2" alt="English"/>
@@ -15,4 +13,5 @@
       </option>
     </select>
   </div>
+  <button type="button" class="btn btn-warning" *ngIf="authService.isAuthenticated()" (click)="logout()">Cerrar sesión</button>
 </nav>

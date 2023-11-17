@@ -5,6 +5,7 @@ import { User } from '../../user/model/user';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Login } from '../model/login';
 import { Token } from '@angular/compiler';
+import { TokenData } from '../model/token';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class PublicService {
     )
   }
 
-  login(login: Login): Observable<Token> {
-    return this.http.post<Token>(this.apiUrl+'/login', login).pipe(
+  login(login: Login): Observable<TokenData> {
+    return this.http.post<TokenData>(this.apiUrl+'/login', login).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }

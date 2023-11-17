@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,11 @@ import { LanguageService } from '../../services/language.service';
 export class HeaderComponent implements OnInit {
 
   targetLanguage : string = "es"
-  constructor(private languageService: LanguageService) {
+  constructor(
+    private languageService: LanguageService,
+    public authService: AuthService) {
   }
+
 
   ngOnInit() {}
 
@@ -20,4 +24,10 @@ export class HeaderComponent implements OnInit {
     this.targetLanguage = targetLanguage;
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userKey');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
+    }
 }
