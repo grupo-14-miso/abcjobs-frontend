@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PreloaderService } from 'src/app/core/template/services/preloader.service';
 import { PublicService } from '../../services/public.service';
 import { LanguageService } from 'src/app/core/template/services/language.service';
@@ -12,18 +12,25 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  role: string;
   loginForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private preloaderService: PreloaderService,
     private publicService: PublicService,
     private languageService: LanguageService,
-    ) { }
+    ) {
+      this.role = ""
+    }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.role = params.get('role') as string;
+
+    });
     this.formBuilderGroup()
   }
 
@@ -44,7 +51,7 @@ export class LoginComponent implements OnInit {
         const loginData = {
           email: emailControl.value,
           password: passwordControl.value,
-          role: "Candidate",
+          role: this.role,
         };
 
         this.publicService.login(loginData).subscribe({
@@ -62,8 +69,8 @@ export class LoginComponent implements OnInit {
           error: (error) => {
             this.preloaderService.hidePreloader();
             console.error('Error login', error);
-            var title = 'Error en login';
-            var text = 'Email o password incorrectos'
+            let title = 'Error en login';
+            let text = 'Email o password incorrectos'
             if(this.languageService.currentLanguage == "en"){
               title = 'Login error'
               text = 'Incorrect email or password'
@@ -81,8 +88,10 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-  home(){
-    this.router.navigate(['/']);
+  register(role: string){
+    if(role == "Candidate"){
+      this.router.navigate(['logup/user']);
+    }
   }
 
 }

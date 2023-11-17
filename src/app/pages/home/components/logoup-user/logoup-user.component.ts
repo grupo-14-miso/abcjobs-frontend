@@ -7,11 +7,11 @@ import { PublicService } from 'src/app/pages/home/services/public.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-user-create',
-  templateUrl: './user-create.component.html',
-  styleUrls: ['./user-create.component.css']
+  selector: 'app-logoup-user',
+  templateUrl: './logoup-user.component.html',
+  styleUrls: ['./logoup-user.component.css']
 })
-export class UserCreateComponent implements OnInit {
+export class LogoupUserComponent implements OnInit {
 
   createForm!: FormGroup;
 
@@ -69,7 +69,7 @@ export class UserCreateComponent implements OnInit {
               icon: 'success',
               confirmButtonColor: '#3085d6',
             }).then((result) => {
-              this.router.navigate(['/login']);
+              this.router.navigate(['/login', "Candidate"]);
             })
           },
           error: (error) => {
@@ -81,7 +81,7 @@ export class UserCreateComponent implements OnInit {
   }
 
   login(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login', "Candidate"]);
   }
 
 }

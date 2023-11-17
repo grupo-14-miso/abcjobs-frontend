@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path:  'users',
-    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
+    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard], data: { roles: ['Candidate', 'Company', 'Admin'] }
   },
 ];
 
