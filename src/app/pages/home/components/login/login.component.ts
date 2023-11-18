@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
             this.preloaderService.hidePreloader();
 
 
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/users']);
           },
           error: (error) => {
             this.preloaderService.hidePreloader();
