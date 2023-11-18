@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('role', response.role);
             localStorage.setItem('name', response.name);
             localStorage.setItem('userKey', response.key);
+            localStorage.setItem('userId', response.id);
             this.preloaderService.hidePreloader();
 
 

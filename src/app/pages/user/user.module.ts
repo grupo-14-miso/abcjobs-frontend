@@ -4,9 +4,12 @@ import { UserRoutingModule } from './user-routing.module';
 import { CoreModule } from "../../core/core.module";
 import { ReactiveFormsModule } from '@angular/forms';
 import { CurriculumComponent } from './components/curriculum/curriculum.component';
+import { PersonalComponent } from './components/personal/personal.component';
 
 @NgModule({
-    declarations: [CurriculumComponent],
+    declarations: [
+      CurriculumComponent,
+      PersonalComponent],
     imports: [
         CommonModule,
         UserRoutingModule,
