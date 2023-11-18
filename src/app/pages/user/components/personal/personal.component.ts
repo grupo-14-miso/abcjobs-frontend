@@ -65,9 +65,7 @@ export class PersonalComponent implements OnInit {
   }
 
   loadData() {
-    this.preloaderService.showPreloader()
     this.userService.getUserByKey(this.authService.getUserKey()).subscribe(data => {
-      this.preloaderService.hidePreloader()
       this.candidate = data
       this.personalForm.patchValue({
         firstName: data.Nombre,
@@ -175,7 +173,6 @@ export class PersonalComponent implements OnInit {
       next: (response) => {
         console.log(response)
         this.preloaderService.hidePreloader()
-        this.preloaderService.hidePreloader();
         let title = 'Datos personales actualizados con exito';
         if(this.languageService.currentLanguage == "en"){
           title = 'Personal data successfully updated'
