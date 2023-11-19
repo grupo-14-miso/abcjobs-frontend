@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LogoupUserComponent } from './components/logoup-user/logoup-user.component';
+import { LogupUserComponent } from './components/logup-user/logup-user.component';
+import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
+import { LogupCompanyComponent } from './components/logup-company/logup-company.component';
 
 const routes: Routes = [
   {
@@ -16,11 +18,19 @@ const routes: Routes = [
   },
   {
     path: "logup/user",
-    component: LogoupUserComponent,
+    component: LogupUserComponent,
+  },
+  {
+    path: "logup/company",
+    component: LogupCompanyComponent,
   },
   {
     path: "dashboard",
     component: DashboardComponent,
+  },
+  {
+    path: "not-authorized",
+    component: NotAuthorizedComponent,
   }
 ];
 

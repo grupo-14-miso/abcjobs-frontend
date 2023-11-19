@@ -21,4 +21,40 @@ constructor() { }
     }
   }
 
+  getRole(): string {
+    const role = localStorage.getItem('role');
+    if (role !== null) {
+      return role;
+    } else {
+      return "";
+    }
+  }
+
+  isCandidate(): boolean {
+    const role = localStorage.getItem('role');
+    if (role == "Candidate") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isCompany(): boolean {
+    const role = localStorage.getItem('role');
+    if (role == "Company") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isAdmin(): boolean {
+    const role = localStorage.getItem('role');
+    if (role == "Admin") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

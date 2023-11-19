@@ -64,8 +64,20 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('userId', response.id);
             this.preloaderService.hidePreloader();
 
+            console.log(this.role)
+            if(this.role == "Candidate"){
+              this.router.navigate(['/users']);
+            }
 
-            this.router.navigate(['/users']);
+            if(this.role == "Admin"){
+              this.router.navigate(['/search']);
+            }
+
+            if(this.role == "Company"){
+              this.router.navigate(['/dashboard']);
+            }
+
+
           },
           error: (error) => {
             this.preloaderService.hidePreloader();
@@ -89,9 +101,14 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+
   register(role: string){
     if(role == "Candidate"){
       this.router.navigate(['logup/user']);
+    }
+
+    if(role == "Company"){
+      this.router.navigate(['logup/company']);
     }
   }
 

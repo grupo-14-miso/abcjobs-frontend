@@ -17,8 +17,15 @@ export class HomeComponent implements OnInit {
   }
 
   users() {
-    this.router.navigate(['/logup/user']);
     this.router.navigate(['/login', "Candidate"]);
+  }
+
+  companies() {
+    this.router.navigate(['/login', "Company"]);
+  }
+
+  admin() {
+    this.router.navigate(['/login', "Admin"]);
   }
 
 }
