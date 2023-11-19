@@ -30,4 +30,10 @@ constructor(private http: HttpClient) { }
     )
   }
 
+  getAssignmentsCandidate(candidate_id: number): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>(this.apiUrl+"/candidate/"+candidate_id).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
 }

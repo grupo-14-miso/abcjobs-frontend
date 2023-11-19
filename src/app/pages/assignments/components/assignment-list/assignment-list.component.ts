@@ -6,6 +6,7 @@ import { Modal } from 'bootstrap';
 import Swal from 'sweetalert2'
 import { TranslatePipe } from 'src/app/core/template/pipes/translate.pipe';
 import { LanguageService } from 'src/app/core/template/services/language.service';
+import { AuthService } from 'src/app/core/template/services/auth.service';
 
 @Component({
   selector: 'app-assignment-list',
@@ -21,10 +22,17 @@ export class AssignmentListComponent implements OnInit {
     private preloaderService: PreloaderService,
     private assignmentService: AssignmentService,
     private languageService: LanguageService,
+    private authService: AuthService
   ) {   }
 
   ngOnInit() {
-    this.getAssignments()
+    if(this.authService.isCandidate())
+    {
+      this.getAssignmentsCandidate(this.authService.getUserKey())
+    }else{
+      this.getAssignments()
+    }
+
   }
 
   start(assignment: Assignment, indice: number) {
@@ -70,6 +78,20 @@ export class AssignmentListComponent implements OnInit {
   getAssignments() {
     this.preloaderService.showPreloader();
     this.assignmentService.getAssignments().subscribe({
+      next: (data) => {
+        console.log(data)
+        this.assignments = data;
+        this.preloaderService.hidePreloader();
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+  }
+
+  getAssignmentsCandidate(key: number) {
+    this.preloaderService.showPreloader();
+    this.assignmentService.getAssignmentsCandidate(key).subscribe({
       next: (data) => {
         console.log(data)
         this.assignments = data;
