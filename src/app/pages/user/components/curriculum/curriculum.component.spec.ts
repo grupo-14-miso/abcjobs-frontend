@@ -3,4 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { LogoupUserComponent } from './logoup-user.component';
+import { CurriculumComponent } from './curriculum.component';
+
+

@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path:  'search',
-    loadChildren: () => import('./pages/search-engine/search-engine.module').then(m => m.SearchEngineModule), canActivate: [AuthGuard], data: { roles: ['Company'] }
+    loadChildren: () => import('./pages/search-engine/search-engine.module').then(m => m.SearchEngineModule), canActivate: [AuthGuard], data: { roles: ['Admin'] }
   },
   {
     path:  'assignments',

@@ -4,7 +4,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SearchEngineRoutingModule } from './search-engine-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { UserService } from './services/user.service';
+import { UserService } from '../user/services/user.service';
 import { SearchListComponent } from './components/search-list/search-list.component';
 import { SearchDetailComponent } from './components/search-detail/search-detail.component';
 import { CoreModule } from "../../core/core.module";

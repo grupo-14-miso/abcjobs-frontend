@@ -1,0 +1,23 @@
+.img-type-cv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  border-radius: 10%;
+  background-color: #75CAEB;
+  border: 3px solid #127EA7;
+  cursor: pointer;
+}
+
+.icon-type-cv {
+  color: #ffffff;
+  margin: auto;
+}
+
+.text-under-icon {
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}

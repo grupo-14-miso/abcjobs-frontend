@@ -30,14 +30,14 @@
               <div class="card-type-user">
                 <div class="card-img-type-user">
                   <div class="img-type-user">
-                      <i class="fas fa-users fa-5x icon-type-user"></i>
+                      <i class="fa fa-building-o fa-5x icon-type-user"></i>
                   </div>
                 </div>
                 <div class="card-text-type-user">
                   <label class="lead">{{ 'Interesado en mano de obra TI' | translate | async }}</label>
                 </div>
               </div>
-              <button class="btn btn-lg btn-primary col-md-12 mt-4" type="button">{{ 'Empresas ' | translate | async }}</button>
+              <button class="btn btn-lg btn-primary col-md-12 mt-4" type="button" (click)="companies()">{{ 'Empresas ' | translate | async }}</button>
             </div>
           </div>
         </div>
@@ -48,14 +48,14 @@
               <div class="card-type-user">
                 <div class="card-img-type-user">
                   <div class="img-type-user">
-                      <i class="fas fa-users fa-5x icon-type-user"></i>
+                      <i class="fa fa-calendar-check-o fa-5x icon-type-user"></i>
                   </div>
                 </div>
                 <div class="card-text-type-user">
                   <label class="lead">{{ 'Funcionarios ' | translate | async }} ABC Jobs</label>
                 </div>
               </div>
-              <button class="btn btn-lg btn-primary col-md-12 mt-4" type="button">ABC Jobs</button>
+              <button class="btn btn-lg btn-primary col-md-12 mt-4" type="button" (click)="admin()">ABC Jobs</button>
             </div>
           </div>
         </div>

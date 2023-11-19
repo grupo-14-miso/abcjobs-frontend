@@ -2,6 +2,8 @@ import { Key } from "../../interview/model/key";
 
 export class Candidate {
   constructor(
+    public key: Key,
+    public id_candidato: string,
     public Nombre: string,
     public apellido: string,
     public ciudad_nacimiento: string,
@@ -13,7 +15,6 @@ export class Candidate {
     public experiencia: Experience[],
     public fecha_nacimiento: string,
     public genero: string,
-    public id_candidato: string,
     public idiomas: Language[],
     public lenguajes_programacion: string[],
     public nacionalidad: string,
@@ -23,10 +24,10 @@ export class Candidate {
     public segundo_apellido: string,
     public segundo_nombre: string,
     public tecnologias_herramientas: string[],
+    public soft_skill: string[],
     public rol: string[],
     public telefono: string,
     public tipo_documento: string,
-    public key: Key,
   ) {}
 }
 

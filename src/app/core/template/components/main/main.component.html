@@ -6,24 +6,19 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto flex-column">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hoja de vida</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Datos personales</a>
-                <a class="dropdown-item" href="#">Educación</a>
-                <a class="dropdown-item" href="#">Experiencia</a>
-                <a class="dropdown-item" href="#">Idioma</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Buscador
+            <li class="nav-item" *ngIf="authService.isCandidate()">
+              <a class="nav-link active" href="users">Hoja de vida
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pruebas</a>
+            <li class="nav-item" *ngIf="authService.isAdmin()">
+              <a class="nav-link active" href="search">Buscador
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCandidate()">
+              <a class="nav-link active" href="assignments">Pruebas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Entrevistas</a>
+              <a class="nav-link active" href="interviews">Entrevistas</a>
             </li>
           </ul>
 
