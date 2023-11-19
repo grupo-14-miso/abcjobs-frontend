@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Translate from "@google-cloud/translate";
 import { TranslationService } from '../../../../core/template/services/translation.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/template/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,21 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router)  {
+  constructor(
+    private router: Router,
+    private authService: AuthService)  {
   }
 
   ngOnInit() {
+    if(this.authService.isCandidate()){
+      this.router.navigate(['users']);
+    }
+    if(this.authService.isCompany()){
+      this.router.navigate(['dashboard']);
+    }
+    if(this.authService.isAdmin()){
+      this.router.navigate(['dashboard']);
+    }
   }
 
   users() {
