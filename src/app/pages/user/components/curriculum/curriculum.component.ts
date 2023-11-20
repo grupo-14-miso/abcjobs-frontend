@@ -17,10 +17,16 @@ export class CurriculumComponent implements OnInit {
     this.router.navigate(['users/personal']);
   }
 
-  studies(){}
+  studies(){
+    this.router.navigate(['users/academic']);
+  }
 
-  experience(){}
+  experience(){
+    this.router.navigate(['users/']);
+  }
 
-  idioms(){}
+  idioms(){
+    this.router.navigate(['users/languages']);
+  }
 
 }
