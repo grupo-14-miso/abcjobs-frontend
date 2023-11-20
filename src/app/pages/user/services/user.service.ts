@@ -5,6 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { SearchParams } from '../../search-engine/model/search';
 import { Candidate } from '../../search-engine/model/candidate';
+import { Academic } from '../model/academic';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,12 @@ export class UserService {
 
   updateUserPersonal(candidate: Candidate): Observable<Notification> {
     return this.http.put<Notification>(this.apiUrl+"/personal/update", candidate).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  updateAcademic(academic: Academic): Observable<Notification> {
+    return this.http.put<Notification>(this.apiUrl+"/education/update", academic).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }

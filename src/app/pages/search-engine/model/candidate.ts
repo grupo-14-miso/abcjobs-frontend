@@ -37,7 +37,8 @@ export class Education {
     public fecha_inicio: string,
     public institucion: string,
     public nivel_academico: string,
-    public titulo_obtenido: string
+    public titulo_obtenido: string,
+    public pais: string
   ) {}
 }
 
