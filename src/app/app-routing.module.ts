@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path:  'search',
-    loadChildren: () => import('./pages/search-engine/search-engine.module').then(m => m.SearchEngineModule), canActivate: [AuthGuard], data: { roles: ['Admin'] }
+    loadChildren: () => import('./pages/search-engine/search-engine.module').then(m => m.SearchEngineModule), canActivate: [AuthGuard], data: { roles: ['Company'] }
   },
   {
     path:  'assignments',
@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path:  'users',
-    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard], data: { roles: ['Candidate', 'Company', 'Admin'] }
+    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard], data: { roles: ['Candidate'] }
   },
 ];
 
