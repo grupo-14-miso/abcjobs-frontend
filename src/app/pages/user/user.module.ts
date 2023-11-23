@@ -10,6 +10,7 @@ import { ExperienceListComponent } from './components/experience-list/experience
 import { LanguagesListComponent } from './components/languages-list/languages-list.component';
 import { AcademicCreateComponent } from './components/academic-create/academic-create.component';
 import { ExperienceCreateComponent } from './components/experience-create/experience-create.component';
+import { LanguagesCreateComponent } from './components/languages-create/languages-create.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { ExperienceCreateComponent } from './components/experience-create/experi
       AcademicCreateComponent,
       ExperienceListComponent,
       ExperienceCreateComponent,
-      LanguagesListComponent],
+      LanguagesListComponent,
+      LanguagesCreateComponent],
     imports: [
         CommonModule,
         UserRoutingModule,

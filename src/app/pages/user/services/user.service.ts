@@ -4,8 +4,10 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { SearchParams } from '../../search-engine/model/search';
-import { Candidate } from '../../search-engine/model/candidate';
+import { Candidate, Language } from '../../search-engine/model/candidate';
 import { Academic } from '../model/academic';
+import { WorkExperience } from '../model/work-experience';
+import { Idiomas } from '../model/idioms';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +53,18 @@ export class UserService {
 
   updateAcademic(academic: Academic): Observable<Notification> {
     return this.http.put<Notification>(this.apiUrl+"/education/update", academic).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  updateExperience(workExperience: WorkExperience): Observable<Notification> {
+    return this.http.put<Notification>(this.apiUrl+"/experiencia/update", workExperience).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  updateLanguage(idioms: Idiomas): Observable<Notification> {
+    return this.http.put<Notification>(this.apiUrl+"/idiomas/update", idioms).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }

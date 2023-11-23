@@ -44,7 +44,7 @@ export class ExperienceListComponent implements OnInit {
       this.experience = data.experiencia
       this.workExperience = {
         id_candidato: data.id_candidato,
-        experience: this.experience
+        experiencia: this.experience
       }
       console.log(this.experience)
       this.preloaderService.hidePreloader();

@@ -3,6 +3,6 @@ import { Education, Experience } from "../../search-engine/model/candidate";
 export class WorkExperience  {
   constructor(
     public id_candidato: string,
-    public experience: Experience[],
+    public experiencia: Experience[],
   ) {}
 }
