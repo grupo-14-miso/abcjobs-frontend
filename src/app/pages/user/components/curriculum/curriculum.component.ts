@@ -22,7 +22,7 @@ export class CurriculumComponent implements OnInit {
   }
 
   experience(){
-    this.router.navigate(['users/']);
+    this.router.navigate(['users/experience']);
   }
 
   idioms(){

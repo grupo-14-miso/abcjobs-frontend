@@ -1,0 +1,43 @@
+<form [formGroup]="createForm" (ngSubmit)="!createForm.invalid && create()">
+  <div class="row">
+
+    <div class="form-group col-lg-12">
+      <label for="empresa">{{ 'Empresa' | translate | async }}</label>
+      <input class="form-control" id="empresa" type="text" formControlName="empresa">
+    </div>
+
+    <div class="form-group col-lg-6">
+      <label for="pais">{{ 'Pais' | translate | async }}</label>
+      <input class="form-control" id="pais" type="text" formControlName="pais">
+    </div>
+
+    <div class="form-group col-lg-6">
+      <label for="ciudad">{{ 'Ciudad' | translate | async }}</label>
+      <input class="form-control" id="ciudad" type="text" formControlName="ciudad">
+    </div>
+
+    <div class="form-group col-lg-6">
+      <label for="cargo">{{ 'Cargo' | translate | async }}</label>
+      <input class="form-control" id="cargo" type="text" formControlName="cargo">
+    </div>
+
+    <div class="form-group col-lg-6">
+      <label for="rol">{{ 'Rol' | translate | async }}</label>
+      <input class="form-control" id="rol" type="text" formControlName="rol">
+    </div>
+
+    <div class="form-group col-lg-6">
+      <label for="fechaInicio">{{ 'Fecha inicio' | translate | async }}:</label>
+      <input class="form-control" id="fechaInicio" type="date" formControlName="fechaInicio">
+    </div>
+    <div class="form-group col-lg-6">
+      <label for="fechaFin">{{ 'Fecha terminación' | translate | async }}:</label>
+      <input class="form-control" id="fechaFin" type="date" formControlName="fechaFin">
+    </div>
+
+  </div>
+
+  <div class="text-right mt-4">
+    <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">{{ 'Guardar' | translate | async }}</button>
+  </div>
+</form>
