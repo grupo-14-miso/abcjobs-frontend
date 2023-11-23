@@ -9,6 +9,7 @@ import { AcademicListComponent } from './components/academic-list/academic-list.
 import { ExperienceListComponent } from './components/experience-list/experience-list.component';
 import { LanguagesListComponent } from './components/languages-list/languages-list.component';
 import { AcademicCreateComponent } from './components/academic-create/academic-create.component';
+import { ExperienceCreateComponent } from './components/experience-create/experience-create.component';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { AcademicCreateComponent } from './components/academic-create/academic-c
       AcademicListComponent,
       AcademicCreateComponent,
       ExperienceListComponent,
+      ExperienceCreateComponent,
       LanguagesListComponent],
     imports: [
         CommonModule,

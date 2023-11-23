@@ -4,6 +4,7 @@ import { Candidate, Education } from 'src/app/pages/search-engine/model/candidat
 import { UserService } from '../../services/user.service';
 import { AuthService } from 'src/app/core/template/services/auth.service';
 import { Academic } from '../../model/academic';
+import { PreloaderService } from 'src/app/core/template/services/preloader.service';
 
 @Component({
   selector: 'app-academic-list',
@@ -18,7 +19,8 @@ export class AcademicListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authService: AuthService,) { }
+    private authService: AuthService,
+    private preloaderService: PreloaderService) { }
 
   ngOnInit() {
     this.loadData()
@@ -35,6 +37,7 @@ export class AcademicListComponent implements OnInit {
   }
 
   loadData() {
+    this.preloaderService.showPreloader();
     this.userService.getUserByKey(this.authService.getUserKey()).subscribe(data => {
       console.log(data)
       this.candidate = data
@@ -44,6 +47,7 @@ export class AcademicListComponent implements OnInit {
         educacion: this.studies
       }
       console.log(this.academic)
+      this.preloaderService.hidePreloader();
     });
   }
 
