@@ -2,10 +2,10 @@ export class Offer {
   company_id: string;
   created_date: string;
   description: string;
-  end_date: string;
   last_modified: string;
   name: string;
   offer_id: number;
+  end_date: string;
   start_date: string;
 
   constructor(

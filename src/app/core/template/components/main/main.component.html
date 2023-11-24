@@ -14,12 +14,17 @@
               <a class="nav-link active" href="search">Buscador
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="projects">Proyectos</a>
+            </li>
             <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCandidate()">
               <a class="nav-link active" href="assignments">Pruebas</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="interviews">Entrevistas</a>
             </li>
+
+
           </ul>
 
 
