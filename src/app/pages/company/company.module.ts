@@ -6,11 +6,15 @@ import { ProjectCreateComponent } from './components/project-create/project-crea
 import { CompanyRoutingModule } from './company-routing.module';
 import { CoreModule } from "../../core/core.module";
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProjectTeamComponent } from './components/project-team/project-team.component';
+import { ProjectTeamMemberComponent } from './components/project-team-member/project-team-member.component';
 
 @NgModule({
     declarations: [
         ProjectListComponent,
-        ProjectCreateComponent
+        ProjectCreateComponent,
+        ProjectTeamComponent,
+        ProjectTeamMemberComponent
     ],
     providers: [CompanyService],
     imports: [

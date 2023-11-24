@@ -5,6 +5,8 @@ import { Company } from '../model/company';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Offer } from '../model/offer';
 import { OfferCreate } from '../model/offer-create';
+import { Member } from '../model/member';
+import { MemberTeam } from '../model/member-team';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,24 @@ export class CompanyService {
 
   saveOffer(offer: OfferCreate): Observable<Notification> {
     return this.http.post<Notification>(this.apiUrl+"/offer", offer).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  getOfferById(offer_id: number): Observable<Offer> {
+    return this.http.get<Offer>(this.apiUrl+"/offerById/"+offer_id).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  getTeam(offer_id: number): Observable<Member[]> {
+    return this.http.get<Member[]>(this.apiUrl+"/equipo/"+offer_id).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  saveMemberTeam(memberTeam: MemberTeam): Observable<Notification> {
+    return this.http.post<Notification>(this.apiUrl+"/equipo", memberTeam).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }

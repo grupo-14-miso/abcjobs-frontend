@@ -11,17 +11,21 @@
               </a>
             </li>
             <li class="nav-item" *ngIf="authService.isCompany()">
-              <a class="nav-link active" href="search">Buscador
+              <a class="nav-link active" href="search">Búsqueda de candidatos
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="projects">Proyectos</a>
+            <li class="nav-item" *ngIf="authService.isCompany()">
+              <a class="nav-link active" href="projects">Mis proyectos</a>
             </li>
-            <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCandidate()">
+            <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCandidate() || authService.isCompany()">
               <a class="nav-link active" href="assignments">Pruebas</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCandidate() || authService.isCompany()">
               <a class="nav-link active" href="interviews">Entrevistas</a>
+            </li>
+
+            <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCompany()">
+              <a class="nav-link active" href="assignments">Evaluación de desempeño</a>
             </li>
 
 
