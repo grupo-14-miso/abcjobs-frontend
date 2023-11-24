@@ -70,11 +70,11 @@ export class LoginComponent implements OnInit {
             }
 
             if(this.role == "Admin"){
-              this.router.navigate(['/search']);
+              this.router.navigate(['/dashboard']);
             }
 
             if(this.role == "Company"){
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/search']);
             }
 
 

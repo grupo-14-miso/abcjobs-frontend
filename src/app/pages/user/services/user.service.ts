@@ -8,6 +8,7 @@ import { Candidate, Language } from '../../search-engine/model/candidate';
 import { Academic } from '../model/academic';
 import { WorkExperience } from '../model/work-experience';
 import { Idiomas } from '../model/idioms';
+import { CandidateReady } from '../model/candidate-ready';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,12 @@ export class UserService {
 
   updateLanguage(idioms: Idiomas): Observable<Notification> {
     return this.http.put<Notification>(this.apiUrl+"/idiomas/update", idioms).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  getUserForTeam(offer_key: number): Observable<CandidateReady[]> {
+    return this.http.get<CandidateReady[]>(this.apiUrl+"/ready/"+offer_key).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }

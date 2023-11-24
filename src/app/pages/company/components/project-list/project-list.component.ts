@@ -4,6 +4,7 @@ import { CompanyService } from '../../service/company.service';
 import { AuthService } from 'src/app/core/template/services/auth.service';
 import { PreloaderService } from 'src/app/core/template/services/preloader.service';
 import { Modal } from 'bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -13,12 +14,12 @@ import { Modal } from 'bootstrap';
 export class ProjectListComponent implements OnInit {
 
   projects: Offer[] = [];
-  project!: Offer
 
   constructor(
     private companyService: CompanyService,
     private authService: AuthService,
-    private preloaderService: PreloaderService) { }
+    private preloaderService: PreloaderService,
+    private router: Router) { }
 
   ngOnInit() {
     this.loadData()
@@ -42,6 +43,11 @@ export class ProjectListComponent implements OnInit {
       console.log(this.projects)
       this.preloaderService.hidePreloader();
     });
+  }
+
+  team(offer: Offer) {
+    console.log(offer)
+    this.router.navigate(['projects/team', offer.offer_id]);
   }
 
 }
