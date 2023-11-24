@@ -24,6 +24,10 @@ const routes: Routes = [
     path:  'users',
     loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard], data: { roles: ['Candidate'] }
   },
+  {
+    path:  'projects',
+    loadChildren: () => import('./pages/company/company.module').then(m => m.CompanyModule), canActivate: [AuthGuard], data: { roles: ['Company'] }
+  }
 ];
 
 @NgModule({

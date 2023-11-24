@@ -1,0 +1,28 @@
+<form [formGroup]="createForm" (ngSubmit)="!createForm.invalid && create()">
+  <div class="row">
+
+    <div class="form-group col-lg-12">
+      <label for="name">{{ 'Nombre' | translate | async }}</label>
+      <input class="form-control" id="name" type="text" formControlName="name">
+    </div>
+
+    <div class="form-group col-lg-12">
+      <label for="description">{{ 'Descripción' | translate | async }}</label>
+      <input class="form-control" id="description" type="text" formControlName="description">
+    </div>
+
+    <div class="form-group col-lg-6">
+      <label for="startDate">{{ 'Fecha inicio' | translate | async }}:</label>
+      <input class="form-control" id="startDate" type="date" formControlName="startDate">
+    </div>
+    <div class="form-group col-lg-6">
+      <label for="endDate">{{ 'Fecha terminación' | translate | async }}:</label>
+      <input class="form-control" id="endDate" type="date" formControlName="endDate">
+    </div>
+
+  </div>
+
+  <div class="text-right mt-4">
+    <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">{{ 'Guardar' | translate | async }}</button>
+  </div>
+</form>
