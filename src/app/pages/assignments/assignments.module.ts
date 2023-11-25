@@ -9,10 +9,18 @@ import { AssignmentTestComponent } from './components/assignment-test/assignment
 import { AssignmentResultComponent } from './components/assignment-result/assignment-result.component';
 import { CoreModule } from "../../core/core.module";
 import { TranslatePipe } from 'src/app/core/template/pipes/translate.pipe';
+import { AssignmentCreateComponent } from './components/assignment-create/assignment-create.component';
 
 @NgModule({
-    declarations: [AssignmentListComponent, AssignmentTestComponent, AssignmentResultComponent],
-    exports: [AssignmentListComponent, AssignmentTestComponent, AssignmentResultComponent],
+    declarations: [
+      AssignmentListComponent,
+      AssignmentTestComponent,
+      AssignmentResultComponent,
+      AssignmentCreateComponent],
+    exports: [
+      AssignmentListComponent,
+      AssignmentTestComponent,
+      AssignmentResultComponent],
     providers: [AssignmentService],
     imports: [
         CommonModule,

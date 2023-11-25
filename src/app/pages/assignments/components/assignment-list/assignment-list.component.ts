@@ -22,7 +22,7 @@ export class AssignmentListComponent implements OnInit {
     private preloaderService: PreloaderService,
     private assignmentService: AssignmentService,
     private languageService: LanguageService,
-    private authService: AuthService
+    public authService: AuthService
   ) {   }
 
   ngOnInit() {
@@ -119,6 +119,16 @@ export class AssignmentListComponent implements OnInit {
           console.error('El elemento no se encontró en el DOM.');
         }
       }, 1000);
+    }
+  }
+
+  createModal(){
+    const myElement = document.getElementById('createModal');
+    if (myElement) {
+      const myModal = new Modal(myElement);
+      myModal.show();
+    } else {
+      console.error('El elemento no se encontró en el DOM.');
     }
   }
 

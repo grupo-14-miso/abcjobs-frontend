@@ -36,4 +36,16 @@ constructor(private http: HttpClient) { }
     )
   }
 
+  getAssignmentsType(type: string): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>(this.apiUrl+"?type="+type).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  saveAssignmentUser(assignment_id: number, candidate_id: number): Observable<Notification> {
+    return this.http.post<Notification>(this.apiUrl+'/candidate/'+assignment_id+'/'+candidate_id, null).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
 }
