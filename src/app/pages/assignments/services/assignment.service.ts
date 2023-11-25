@@ -48,4 +48,10 @@ constructor(private http: HttpClient) { }
     )
   }
 
+  getAssignmentsCompany(company_id: number): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>(this.apiUrl+"/company/"+company_id).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
 }

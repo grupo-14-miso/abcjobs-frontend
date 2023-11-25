@@ -30,6 +30,15 @@ constructor() { }
     }
   }
 
+  getName(): string {
+    const name = localStorage.getItem('name');
+    if (name !== null) {
+      return name;
+    } else {
+      return "";
+    }
+  }
+
   isCandidate(): boolean {
     const role = localStorage.getItem('role');
     if (role == "Candidate") {

@@ -41,4 +41,16 @@ export class InterviewService {
     )
   }
 
+  getInterviewsByCompany(company_id: number): Observable<Interview[]> {
+    return this.http.get<Interview[]>(this.apiUrl+"?company="+company_id).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  getInterviewsByCandidate(candidate_id: number): Observable<Interview[]> {
+    return this.http.get<Interview[]>(this.apiUrl+"?candidate="+candidate_id).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
 }
