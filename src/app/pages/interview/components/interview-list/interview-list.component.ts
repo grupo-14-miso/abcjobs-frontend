@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/core/template/services/auth.service';
 export class InterviewListComponent implements OnInit {
 
   interviews: Interview[] = [];
+  interview?: Interview;
 
   constructor(
     private preloaderService: PreloaderService,
@@ -90,6 +91,45 @@ export class InterviewListComponent implements OnInit {
       myModal.show();
     } else {
       console.error('El elemento no se encontró en el DOM.');
+    }
+  }
+
+  start(interview: Interview) {
+    this.preloaderService.showPreloader();
+    if (interview != null) {
+      this.interview = interview
+      console.log(interview)
+
+      setTimeout(() => {
+        this.preloaderService.hidePreloader();
+        const myElement = document.getElementById('testModal');
+        if (myElement) {
+          const myModal = new Modal(myElement);
+          myModal.show();
+        } else {
+          console.error('El elemento no se encontró en el DOM.');
+        }
+      }, 1000);
+    }
+  }
+
+
+  result(interview: Interview) {
+    this.preloaderService.showPreloader();
+    if (interview != null) {
+      this.interview = interview
+      console.log(interview)
+
+      setTimeout(() => {
+        this.preloaderService.hidePreloader();
+        const myElement = document.getElementById('resultModal');
+        if (myElement) {
+          const myModal = new Modal(myElement);
+          myModal.show();
+        } else {
+          console.error('El elemento no se encontró en el DOM.');
+        }
+      }, 1000);
     }
   }
 
