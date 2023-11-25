@@ -17,15 +17,15 @@
             <li class="nav-item" *ngIf="authService.isCompany()">
               <a class="nav-link active" href="projects">Mis proyectos</a>
             </li>
-            <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCandidate() || authService.isCompany()">
-              <a class="nav-link active" href="assignments">Pruebas</a>
+            <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCandidate()">
+              <a class="nav-link active" href="assignments/all">Pruebas</a>
             </li>
             <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCandidate() || authService.isCompany()">
               <a class="nav-link active" href="interviews">Entrevistas</a>
             </li>
 
             <li class="nav-item" *ngIf="authService.isAdmin() || authService.isCompany()">
-              <a class="nav-link active" href="assignments">Evaluación de desempeño</a>
+              <a class="nav-link active" href="assignments/Performance">Evaluación de desempeño</a>
             </li>
 
 

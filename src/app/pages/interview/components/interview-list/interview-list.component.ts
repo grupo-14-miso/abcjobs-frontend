@@ -3,6 +3,7 @@ import { Interview } from '../../model/interview';
 import { PreloaderService } from 'src/app/core/template/services/preloader.service';
 import { InterviewService } from '../../services/interview.service';
 import { Modal } from 'bootstrap';
+import { AuthService } from 'src/app/core/template/services/auth.service';
 
 @Component({
   selector: 'app-interview-list',
@@ -16,10 +17,22 @@ export class InterviewListComponent implements OnInit {
   constructor(
     private preloaderService: PreloaderService,
     private interviewService: InterviewService,
+    public authService: AuthService
     ) { }
 
   ngOnInit() {
-    this.getInterviews()
+    if(this.authService.isCandidate())
+    {
+      this.getInterviewsByCandidate(this.authService.getUserKey())
+    }
+    if(this.authService.isCompany())
+    {
+      this.getInterviewsByCompany(this.authService.getUserKey())
+    }
+    if(this.authService.isAdmin())
+    {
+      this.getInterviews()
+    }
   }
 
   getInterviews() {
@@ -28,7 +41,41 @@ export class InterviewListComponent implements OnInit {
       next: (data) => {
         console.log(data)
         this.interviews = data;
-        this.preloaderService.hidePreloader();
+        setTimeout(() => {
+          this.preloaderService.hidePreloader();
+        }, 6000);
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+  }
+
+  getInterviewsByCompany(company_id: number) {
+    this.preloaderService.showPreloader();
+    this.interviewService.getInterviewsByCompany(company_id).subscribe({
+      next: (data) => {
+        console.log(data)
+        this.interviews = data;
+        setTimeout(() => {
+          this.preloaderService.hidePreloader();
+        }, 6000);
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+  }
+
+  getInterviewsByCandidate(candidate_id: number) {
+    this.preloaderService.showPreloader();
+    this.interviewService.getInterviewsByCandidate(candidate_id).subscribe({
+      next: (data) => {
+        console.log(data)
+        this.interviews = data;
+        setTimeout(() => {
+          this.preloaderService.hidePreloader();
+        }, 6000);
       },
       error: (error) => {
         console.error(error);

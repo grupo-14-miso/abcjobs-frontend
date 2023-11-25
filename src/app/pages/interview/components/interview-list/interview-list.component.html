@@ -6,7 +6,7 @@
           <div class="card-body">
             <h4 class="card-title">{{ 'Listado de entrevistas programadas' | translate | async }}</h4>
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col-lg-12" *ngIf="authService.isAdmin()">
                 <button type="button" class="btn btn-primary" (click)="createModal()">{{ 'Programar' | translate | async }}</button>
               </div>
               <table class="table table-hover mt-4">

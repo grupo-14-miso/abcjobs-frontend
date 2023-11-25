@@ -13,5 +13,8 @@
       </option>
     </select>
   </div>
+  <span *ngIf="authService.isAuthenticated()" class="color-header"><b>{{authService.getName()}}</b></span>
+  <span *ngIf="authService.isAuthenticated()" class="color-header"><b>({{authService.getRole()}})</b></span>
+  <span style="margin: 0 5px;"></span>
   <button type="button" class="btn btn-warning" *ngIf="authService.isAuthenticated()" (click)="logout()">Cerrar sesión</button>
 </nav>

@@ -10,6 +10,7 @@ import { InterviewService } from 'src/app/pages/interview/services/interview.ser
 import { Assignment } from '../../model/assignment';
 import { AssignmentService } from '../../services/assignment.service';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/core/template/services/auth.service';
 
 @Component({
   selector: 'app-assignment-create',
@@ -23,19 +24,23 @@ export class AssignmentCreateComponent implements OnInit {
   offers: Offer[] = [];
   candidates: SelectCandidate[] = [];
   assignments: Assignment[] = [];
-
   constructor(
     private formBuilder: FormBuilder,
     private preloaderService: PreloaderService,
     private languageService: LanguageService,
     private companyService: CompanyService,
     private interviewService: InterviewService,
-    private assignmentService: AssignmentService
+    private assignmentService: AssignmentService,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
     this.formBuilderGroup()
     this.loadData()
+    if(this.authService.isCompany())
+    {
+      this.loadConfigCompany()
+    }
   }
 
   formBuilderGroup() {
@@ -107,6 +112,13 @@ export class AssignmentCreateComponent implements OnInit {
     } else {
       this.assignments = [];
     }
+  }
+
+  loadConfigCompany() {
+    this.createForm.controls['id_company'].setValue(this.authService.getUserKey())
+    this.createForm.controls['id_company'].disable()
+    this.createForm.controls['assignmentType'].setValue('Performance')
+    this.createForm.controls['assignmentType'].disable()
   }
 
   create() {

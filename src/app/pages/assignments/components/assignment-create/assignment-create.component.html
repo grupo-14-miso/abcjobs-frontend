@@ -26,6 +26,7 @@
       <label for="assignmentType">{{ 'Tipo de prueba' | translate | async }}:</label>
       <select class="form-control" id="assignmentType" formControlName="assignmentType">
         <option value="" disabled selected>Seleccione...</option>
+        <option *ngIf="authService.isCompany()" value="Performance">{{ 'Desempeño' | translate | async }}</option>
         <option value="Technical">{{ 'Técnica' | translate | async }}</option>
         <option value="Psychotechnical">{{ 'Psicotécnica' | translate | async }}</option>
         <option value="Language">{{ 'Idiomas' | translate | async }}</option>

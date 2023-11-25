@@ -93,7 +93,9 @@ export class InterviewCreateComponent implements OnInit {
   }
 
   create() {
+
     if (this.createForm.valid) {
+      this.preloaderService.showPreloader();
       const idCompanyControl = this.createForm.get('id_company');
       const idOfferControl = this.createForm.get('id_offer');
       const candidatesControl = this.createForm.get('candidates');
@@ -129,6 +131,7 @@ export class InterviewCreateComponent implements OnInit {
 
         },
         error: (error) => {
+          this.preloaderService.showPreloader();
           console.error('Error al crear la entrevista', error);
         }
       });

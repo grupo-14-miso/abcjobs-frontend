@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 import { TranslatePipe } from 'src/app/core/template/pipes/translate.pipe';
 import { LanguageService } from 'src/app/core/template/services/language.service';
 import { AuthService } from 'src/app/core/template/services/auth.service';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignment-list',
@@ -17,27 +18,61 @@ export class AssignmentListComponent implements OnInit {
 
   assignments: Assignment[] = [];
   assignment?: Assignment;
+  type: string = '';
+  program: boolean = true;
+  isInit: boolean = false;
+
 
   constructor(
     private preloaderService: PreloaderService,
     private assignmentService: AssignmentService,
     private languageService: LanguageService,
-    public authService: AuthService
+    public authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {   }
 
   ngOnInit() {
-    if(this.authService.isCandidate())
-    {
-      this.getAssignmentsCandidate(this.authService.getUserKey())
-    }else{
-      this.getAssignments()
-    }
+
+    this.route.paramMap.subscribe(params => {
+      this.type = params.get('type') as string;
+      console.log(this.type)
+
+      if(this.type == "Performance"){
+        if(this.authService.isCompany())
+        {
+          this.isInit=true
+          this.getAssignmentsCompany(this.authService.getUserKey())
+        }
+        if(this.authService.isAdmin())
+        {
+          this.program = false;
+          this.getAssignmentsType("Performance")
+        }
+      }
+
+      if(this.type != "Performance"){
+        if(this.authService.isCandidate())
+        {
+          this.program = false;
+          this.isInit=true
+          this.getAssignmentsCandidate(this.authService.getUserKey())
+        }
+        if(this.authService.isAdmin())
+        {
+          this.getAssignments()
+        }
+      }
+
+
+    });
+
 
   }
 
   start(assignment: Assignment, indice: number) {
-    var title = '¿Esta seguro de iniciar la prueba?';
-    var text = 'Una vez iniciada no se puede cancelar'
+    let title = '¿Esta seguro de iniciar la prueba?';
+    let text = 'Una vez iniciada no se puede cancelar'
     if(this.languageService.currentLanguage == "en"){
       title = 'Are you sure to start the test?'
       text = 'Once started it cannot be canceled'
@@ -89,9 +124,37 @@ export class AssignmentListComponent implements OnInit {
     });
   }
 
+  getAssignmentsType(type: string) {
+    this.preloaderService.showPreloader();
+    this.assignmentService.getAssignmentsType(type).subscribe({
+      next: (data) => {
+        console.log(data)
+        this.assignments = data;
+        this.preloaderService.hidePreloader();
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+  }
+
   getAssignmentsCandidate(key: number) {
     this.preloaderService.showPreloader();
     this.assignmentService.getAssignmentsCandidate(key).subscribe({
+      next: (data) => {
+        console.log(data)
+        this.assignments = data;
+        this.preloaderService.hidePreloader();
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+  }
+
+  getAssignmentsCompany(key: number) {
+    this.preloaderService.showPreloader();
+    this.assignmentService.getAssignmentsCompany(key).subscribe({
       next: (data) => {
         console.log(data)
         this.assignments = data;
