@@ -60,7 +60,7 @@ export class AssignmentListComponent implements OnInit {
         }
         if(this.authService.isAdmin())
         {
-          this.getAssignments()
+          this.getAssignmentsCandidate(0)
         }
       }
 
