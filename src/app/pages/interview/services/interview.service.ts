@@ -6,6 +6,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { Interview } from '../model/interview';
 import { Candidate } from '../../search-engine/model/candidate';
 import { SelectCandidate } from '../model/select-candidate';
+import { Result } from '../model/result';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,12 @@ export class InterviewService {
 
   getInterviewsByCandidate(candidate_id: number): Observable<Interview[]> {
     return this.http.get<Interview[]>(this.apiUrl+"?candidate="+candidate_id).pipe(
+      catchError(err=> throwError(() => new Error('error en el servicio')))
+    )
+  }
+
+  saveResult(result: Result, interview_id: number): Observable<Notification> {
+    return this.http.post<Notification>(this.apiUrl+'/'+interview_id, result).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
