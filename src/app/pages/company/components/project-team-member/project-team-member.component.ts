@@ -103,5 +103,13 @@ export class ProjectTeamMemberComponent implements OnInit {
     }
   }
 }
+change(event: Event) {
+  const selectElement = event.target as HTMLSelectElement; // Casting aquí
+  const value = selectElement.value;
+  const selectedCandidate = this.candidates.find(candidate => candidate.id_candidato === value);
 
+  if (selectedCandidate) {
+    this.candidate = selectedCandidate
+  }
+}
 }
