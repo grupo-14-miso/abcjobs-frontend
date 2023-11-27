@@ -14,6 +14,7 @@
                   <tr>
                     <th scope="col">{{ 'Tipo de prueba' | translate | async }}</th>
                     <th scope="col">{{ 'Prueba' | translate | async }}</th>
+                    <th scope="col">{{ 'Codigo candidato' | translate | async }}</th>
                     <th scope="col">{{ 'Estado' | translate | async }}</th>
                     <th scope="col">{{ 'Acción' | translate | async }}</th>
                   </tr>
@@ -22,6 +23,7 @@
                   <tr *ngFor="let assignment of assignments; index as i">
                     <td> {{ assignment.type}}</td>
                     <td> {{ assignment.focus}}</td>
+                    <td> {{ assignment.candidate_id}}</td>
                     <td> {{ assignment.status| translate | async }}</td>
                     <td>
                       <button type="button" class="btn btn-link" *ngIf="assignment.status != 'finished' && isInit" (click)="start(assignment, i)">{{ 'Iniciar' | translate | async }}</button>

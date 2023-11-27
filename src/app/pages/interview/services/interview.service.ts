@@ -14,12 +14,12 @@ import { Result } from '../model/result';
 export class InterviewService {
 
   private apiUrl: string = environment.baseUrl + 'interviews';
-
+  private apiUrlGet: string = environment.baseUrl + 'interviews-get';
 
   constructor(private http: HttpClient) { }
 
   getInterviews(): Observable<Interview[]> {
-    return this.http.get<Interview[]>(this.apiUrl).pipe(
+    return this.http.get<Interview[]>(this.apiUrlGet).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
@@ -31,7 +31,7 @@ export class InterviewService {
   }
 
   getCandidatesByOffer(offer_id: number): Observable<SelectCandidate[]> {
-    return this.http.get<SelectCandidate[]>(this.apiUrl+"/offer/"+offer_id+"/pre").pipe(
+    return this.http.get<SelectCandidate[]>(this.apiUrlGet+"/offer/"+offer_id+"/pre").pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
@@ -43,13 +43,13 @@ export class InterviewService {
   }
 
   getInterviewsByCompany(company_id: number): Observable<Interview[]> {
-    return this.http.get<Interview[]>(this.apiUrl+"?company="+company_id).pipe(
+    return this.http.get<Interview[]>(this.apiUrlGet+"?company="+company_id).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
 
   getInterviewsByCandidate(candidate_id: number): Observable<Interview[]> {
-    return this.http.get<Interview[]>(this.apiUrl+"?candidate="+candidate_id).pipe(
+    return this.http.get<Interview[]>(this.apiUrlGet+"?candidate="+candidate_id).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }

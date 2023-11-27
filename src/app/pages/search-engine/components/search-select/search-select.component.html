@@ -4,7 +4,7 @@
       <label for="company" class="mt-4">{{ 'Empresa' | translate | async }}:</label>
       <select class="form-control" id="company" formControlName="company">
         <option value="" disabled selected>Seleccione...</option>
-        <option *ngFor="let company of companies" [value]="company.company_id">{{ company.name | translate | async }}</option>
+        <option *ngFor="let company of companies" [value]="company.company_id">{{ company.name }}</option>
       </select>
     </div>
     <div class="form-group col-lg-12">

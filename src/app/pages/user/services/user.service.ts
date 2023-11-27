@@ -16,11 +16,12 @@ import { CandidateReady } from '../model/candidate-ready';
 export class UserService {
 
   private apiUrl: string = environment.baseUrl + 'users';
+  private apiUrlGet: string = environment.baseUrl + 'users-get';
 
   constructor(private http: HttpClient) { }
 
   getProfiles(): Observable<Profile[]> {
-    return this.http.get<Profile[]>(this.apiUrl+"/profiles").pipe(
+    return this.http.get<Profile[]>(this.apiUrlGet+"/profiles").pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
@@ -35,13 +36,13 @@ export class UserService {
         });
       }
     });
-    return this.http.get<Candidate[]>(this.apiUrl, { params: httpParams }).pipe(
+    return this.http.get<Candidate[]>(this.apiUrlGet, { params: httpParams }).pipe(
       catchError(err => throwError(() => new Error('Error en el servicio de búsqueda')))
     )
   }
 
   getUserByKey(user_key: number): Observable<Candidate> {
-    return this.http.get<Candidate>(this.apiUrl+"/"+user_key).pipe(
+    return this.http.get<Candidate>(this.apiUrlGet+"/"+user_key).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
@@ -71,7 +72,7 @@ export class UserService {
   }
 
   getUserForTeam(offer_key: number): Observable<CandidateReady[]> {
-    return this.http.get<CandidateReady[]>(this.apiUrl+"/ready/"+offer_key).pipe(
+    return this.http.get<CandidateReady[]>(this.apiUrlGet+"/ready/"+offer_key).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }

@@ -10,11 +10,12 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class AssignmentService {
 
 private apiUrl: string = environment.baseUrl + 'assignments';
+private apiUrlGet: string = environment.baseUrl + 'assignments-get';
 
 constructor(private http: HttpClient) { }
 
   getAssignments(): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(this.apiUrl).pipe(
+    return this.http.get<Assignment[]>(this.apiUrlGet).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
@@ -31,13 +32,13 @@ constructor(private http: HttpClient) { }
   }
 
   getAssignmentsCandidate(candidate_id: number): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(this.apiUrl+"/candidate/"+candidate_id).pipe(
+    return this.http.get<Assignment[]>(this.apiUrlGet+"/candidate/"+candidate_id).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
 
   getAssignmentsType(type: string): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(this.apiUrl+"?type="+type).pipe(
+    return this.http.get<Assignment[]>(this.apiUrlGet+"?type="+type).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
@@ -49,7 +50,7 @@ constructor(private http: HttpClient) { }
   }
 
   getAssignmentsCompany(company_id: number): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>(this.apiUrl+"/company/"+company_id).pipe(
+    return this.http.get<Assignment[]>(this.apiUrlGet+"/company/"+company_id).pipe(
       catchError(err=> throwError(() => new Error('error en el servicio')))
     )
   }
