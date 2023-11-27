@@ -1,6 +1,7 @@
 export class Assignment {
   constructor(
     public assignment_id: number,
+    public candidate_id: number,
     public focus: string,
     public questions: Question[],
     public result: string,

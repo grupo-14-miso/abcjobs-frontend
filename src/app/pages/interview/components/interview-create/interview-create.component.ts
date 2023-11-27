@@ -60,7 +60,9 @@ export class InterviewCreateComponent implements OnInit {
     this.companyService.getCompanies().subscribe({
       next: (data) => {
         this.companies = data;
-        this.preloaderService.hidePreloader();
+        setTimeout(() => {
+          this.preloaderService.hidePreloader();
+        }, 3000);
       },
       error: (error) => {
         console.error(error);
@@ -68,18 +70,22 @@ export class InterviewCreateComponent implements OnInit {
     });
   }
   loadOffersByCompany(companyId: number) {
+    this.preloaderService.showPreloader();
     if (companyId) {
       this.companyService.getOffers(companyId).subscribe((offers) => {
         this.offers = offers;
+        this.preloaderService.hidePreloader();
       });
     } else {
       this.offers = [];
     }
   }
   loadCandidateByOffer(offerId: number) {
+    this.preloaderService.showPreloader();
     if (offerId) {
       this.interviewService.getCandidatesByOffer(offerId).subscribe((candidates) => {
         this.candidates = candidates;
+        this.preloaderService.hidePreloader();
       });
     } else {
       this.offers = [];
@@ -87,7 +93,9 @@ export class InterviewCreateComponent implements OnInit {
   }
 
   create() {
+
     if (this.createForm.valid) {
+      this.preloaderService.showPreloader();
       const idCompanyControl = this.createForm.get('id_company');
       const idOfferControl = this.createForm.get('id_offer');
       const candidatesControl = this.createForm.get('candidates');
@@ -123,6 +131,7 @@ export class InterviewCreateComponent implements OnInit {
 
         },
         error: (error) => {
+          this.preloaderService.showPreloader();
           console.error('Error al crear la entrevista', error);
         }
       });

@@ -1,0 +1,42 @@
+<div class="bs-docs-section">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <div class="bs-component">
+        <div class="card bg-light mb-3 mt-4">
+          <div class="card-body">
+            <h4 class="card-title">{{ 'Registrar candidato' | translate | async }}</h4>
+            <p class="lead text-center">{{ 'Datos de acceso' | translate | async }}</p>
+            <hr class="my-4">
+            <form [formGroup]="createForm" (ngSubmit)="!createForm.invalid && create()">
+              <div class="row">
+                <div class="form-group col-lg-6">
+                  <label for="name">Nombre:</label>
+                  <input class="form-control" id="name" type="text" formControlName="name">
+                </div>
+                <div class="form-group col-lg-6">
+                  <label for="lastname">Apellido:</label>
+                  <input class="form-control" id="lastname" type="text" formControlName="lastname">
+                </div>
+                <div class="form-group col-lg-12">
+                  <label for="link">Email:</label>
+                  <input class="form-control" id="email" type="text" formControlName="email">
+                </div>
+                <div class="form-group col-lg-12">
+                  <label for="password">Contraseña:</label>
+                  <input class="form-control" id="password" type="password" formControlName="password">
+                </div>
+              </div>
+
+              <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="createForm.invalid">{{ 'Crear cuenta' | translate | async }}</button>
+                <hr class="my-4">
+                <p class="lead text-center">{{ '¿Ya tienes cuenta?' | translate | async }}</p>
+                <button type="submit" class="btn btn-warning btn-lg" (click)="login()">{{ 'INGRESAR' | translate | async }}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

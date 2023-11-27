@@ -4,7 +4,7 @@ import { AssignmentListComponent } from './components/assignment-list/assignment
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':type',
     component: AssignmentListComponent,
   },
 

@@ -6,7 +6,7 @@
           <div class="card-body">
             <h4 class="card-title">{{ 'Listado de entrevistas programadas' | translate | async }}</h4>
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col-lg-12" *ngIf="authService.isAdmin()">
                 <button type="button" class="btn btn-primary" (click)="createModal()">{{ 'Programar' | translate | async }}</button>
               </div>
               <table class="table table-hover mt-4">
@@ -28,6 +28,8 @@
                       <p *ngFor="let candidate_detail of interview.candidates_details">{{ candidate_detail.candidate.Nombre + " " +candidate_detail.candidate.apellido}}</p>
                     </td>
                     <td>
+                      <button type="button" class="btn btn-link" *ngIf="interview.result == '' && authService.isCompany()" (click)="start(interview)">{{ 'Registrar' | translate | async }}</button>
+                      <button type="button" class="btn btn-link" *ngIf="interview.result != ''" (click)="result(interview)">{{ 'Resultados' | translate | async }}</button>
                     </td>
                   </tr>
                 </tbody>
@@ -52,6 +54,41 @@
       </div>
       <div class="modal-body">
         <app-interview-create></app-interview-create>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal register result-->
+<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ 'Registrar resultado de la entrevista' | translate | async }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-interview-result-create [interview]="interview"></app-interview-result-create>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal result-->
+<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ 'Resultado de la entrevista'}}</h5>
+      </div>
+      <div class="modal-body">
+        <app-interview-result [interview]="interview"></app-interview-result>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'Cerrar' | translate | async }}</button>
       </div>
     </div>
   </div>

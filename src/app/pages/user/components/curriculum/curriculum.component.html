@@ -1,0 +1,53 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="bs-component">
+        <div class="card bg-light mb-3 mt-4">
+          <div class="card-body">
+            <h4 class="card-title">{{ 'Hoja de vida' | translate | async }}</h4>
+            <div class="row mt-4">
+
+              <div class="col-md-3">
+                <div class="img-type-cv" (click)="personal()">
+                  <i class="fa fa-user fa-7x icon-type-cv"></i>
+                  <div class="text-under-icon">
+                    <h4>{{ 'Datos personales' | translate | async }}</h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="img-type-cv" (click)="studies()">
+                  <i class="fa fa-graduation-cap fa-7x icon-type-cv"></i>
+                  <div class="text-under-icon">
+                    <h5>{{ 'Formación académica' | translate | async }}</h5>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="img-type-cv" (click)="experience()">
+                  <i class="fa fa-briefcase fa-7x icon-type-cv"></i>
+                  <div class="text-under-icon">
+                    <h4>{{ 'Experiencia laboral' | translate | async }}</h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="img-type-cv" (click)="idioms()">
+                  <i class="fa fa-flag fa-7x icon-type-cv"></i>
+                  <div class="text-under-icon">
+                    <h4>{{ 'Idiomas' | translate | async }}</h4>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

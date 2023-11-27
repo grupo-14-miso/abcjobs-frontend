@@ -9,6 +9,7 @@ import { InterviewService } from 'src/app/pages/interview/services/interview.ser
 import { InterviewPreCandidate } from 'src/app/pages/interview/model/interview-pre-candidate';
 import { LanguageService } from 'src/app/core/template/services/language.service';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/core/template/services/auth.service';
 
 @Component({
   selector: 'app-search-select',
@@ -30,12 +31,20 @@ export class SearchSelectComponent implements OnInit {
     private companyService: CompanyService,
     private interviewService: InterviewService,
     private languageService: LanguageService,
+    private authService: AuthService
 
   ) { }
 
   ngOnInit() {
     this.formBuilderGroup();
     this.getCompanies();
+    this.loadConfigCompany();
+  }
+
+
+  loadConfigCompany() {
+    this.selectForm.controls['company'].setValue(this.authService.getUserKey())
+    this.selectForm.controls['company'].disable()
   }
 
   formBuilderGroup() {

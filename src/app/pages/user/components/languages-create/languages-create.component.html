@@ -1,0 +1,57 @@
+<form [formGroup]="createForm" (ngSubmit)="!createForm.invalid && create()">
+  <div class="row">
+
+    <div class="form-group col-lg-12">
+      <label for="idioma">{{ 'Idioma' | translate | async }}</label>
+      <input class="form-control" id="idioma" type="text" formControlName="idioma">
+    </div>
+
+    <div class="form-group col-lg-4">
+      <label for="nivelConversacion">{{ 'Nivel conversación' | translate | async }}</label>
+      <input class="form-control" id="nivelConversacion" type="number" formControlName="nivelConversacion">
+    </div>
+
+    <div class="form-group col-lg-4">
+      <label for="nivelLectura">{{ 'Nivel lectura' | translate | async }}</label>
+      <input class="form-control" id="nivelLectura" type="number" formControlName="nivelLectura">
+    </div>
+
+    <div class="form-group col-lg-4">
+      <label for="nivelEscritura">{{ 'Nivel escritura' | translate | async }}</label>
+      <input class="form-control" id="nivelEscritura" type="number" formControlName="nivelEscritura">
+    </div>
+
+    <div class="form-group col-lg-6">
+      <label for="nativo">{{ 'Nativo' | translate | async }}</label>
+      <div class="row">
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" [formControlName]="'nativo'" id="'answerSI" value="si">
+            <label class="form-check-label" for="answerSI">
+              Si
+            </label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" [formControlName]="'nativo'" id="'answerNO" value="no">
+            <label class="form-check-label" for="answerNO">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group col-lg-6">
+      <label for="fechaCertificacion">{{ 'Fecha certificacion' | translate | async }}:</label>
+      <input class="form-control" id="fechaCertificacion" type="date" formControlName="fechaCertificacion">
+    </div>
+
+  </div>
+
+  <div class="text-right mt-4">
+    <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">{{ 'Guardar' | translate | async }}</button>
+  </div>
+</form>

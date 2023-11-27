@@ -1,0 +1,58 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="bs-component">
+        <div class="card bg-light mb-3 mt-4">
+          <div class="card-body">
+            <h4 class="card-title">{{ 'Idiomas' | translate | async }}</h4>
+            <div class="row">
+              <div class="col-lg-12">
+                <button type="button" class="btn btn-primary" (click)="createModal()">{{ 'Agregar' | translate | async }}</button>
+              </div>
+              <table class="table table-hover mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">{{ 'Idioma' | translate | async }}</th>
+                    <th scope="col">{{ 'Nivel conversación' | translate | async }}</th>
+                    <th scope="col">{{ 'Nivel lectura' | translate | async }}</th>
+                    <th scope="col">{{ 'Nivel escritura' | translate | async }}</th>
+                    <th scope="col">{{ 'Nativo' | translate | async }}</th>
+                    <th scope="col">{{ 'Fecha certificación' | translate | async }}</th>
+                    <th scope="col">{{ 'Acciones' | translate | async }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let lan of language; index as i">
+                    <td> {{ lan.idioma }}</td>
+                    <td> {{ lan.nivel_conversacion }}</td>
+                    <td> {{ lan.nivel_lectura }}</td>
+                    <td> {{ lan.nivel_escritura }}</td>
+                    <td> {{ lan.nativo }}</td>
+                    <td> {{ lan.fecha_certificacion }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- create Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ 'Registrar idiomas' | translate | async }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-languages-create [idioms]="idiomas"></app-languages-create>
+      </div>
+    </div>
+  </div>
+</div>

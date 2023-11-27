@@ -1,0 +1,64 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="bs-component">
+        <div class="card bg-light mb-3 mt-4">
+          <div class="card-body">
+            <h4 class="card-title">{{ 'Equipo del proyecto' | translate | async }}</h4>
+            <p class="lead"><b>{{ 'Nombre del proyecto:' | translate | async }}</b> {{offer?.name}}</p>
+            <p class="lead"><b>{{ 'Descripción:' | translate | async }} </b> {{offer?.description}}</p>
+            <p class="lead"><b>{{ 'Fechas (inicio / fin):' | translate | async }} </b> {{offer?.start_date}} / {{offer?.end_date}}</p>
+
+            <div class="card border-info mb-3">
+              <div class="card-header">{{ 'Listado de integrantes' | translate | async }}</div>
+              <div class="card-body">
+                <div class="col-lg-12">
+                  <button type="button" class="btn btn-primary" (click)="createModal()">{{ 'Agregar' | translate | async }}</button>
+                </div>
+                <table class="table table-hover mt-4">
+                  <thead>
+                    <tr>
+                      <th scope="col">{{ 'Nombre' | translate | async }}</th>
+                      <th scope="col">{{ 'Rol' | translate | async }}</th>
+                      <th scope="col">{{ 'Tipo' | translate | async }}</th>
+                      <th scope="col">{{ 'Estado' | translate | async }}</th>
+                      <th scope="col">{{ 'Acciones' | translate | async }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let member of members; index as i">
+                      <td> {{ member.nombre }}</td>
+                      <td> {{ member.rol }}</td>
+                      <td> {{ member.tipo }}</td>
+                      <td> {{ member.estado }}</td>
+                      <td>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- create Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ 'Registrar integrante al equipo' | translate | async }}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-project-team-member [offer]="offer"></app-project-team-member>
+      </div>
+    </div>
+  </div>
+</div>

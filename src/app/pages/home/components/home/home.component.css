@@ -1,0 +1,36 @@
+.card-type-user{
+  background-color: #D0E7F1;
+  height: 150px;
+  border-top-right-radius:150px;
+  border-bottom-right-radius:150px;
+}
+
+.card-img-type-user {
+ display: inline-block;
+ background: white;
+ width: 150px;
+ border-top-right-radius:150px;
+ border-bottom-right-radius:150px;
+}
+
+.img-type-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #75CAEB;
+  border: 3px solid #127EA7;
+}
+
+.icon-type-user {
+  color: #ffffff;
+  margin: auto;
+}
+
+.card-text-type-user {
+  display: inline-block;
+  width: 80px;
+  margin-left: 2%;
+ }

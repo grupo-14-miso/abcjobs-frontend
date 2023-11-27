@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../user/services/user.service';
 import { Profile } from '../../model/profile';
 import { PreloaderService } from '../../../../core/template/services/preloader.service';
 import { Candidate } from '../../model/candidate';
