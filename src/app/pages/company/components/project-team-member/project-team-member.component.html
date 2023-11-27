@@ -4,7 +4,7 @@
       <label for="candidateId">{{ 'Candidato' | translate | async }}:</label>
       <select class="form-control" id="candidateId" formControlName="candidateId" (change)="change($event)">
         <option value="" disabled selected>Seleccione...</option>
-        <option *ngFor="let candidate of candidates" [value]="candidate.id_candidato">{{ candidate.name }}</option>
+        <option *ngFor="let candidate of candidates" [value]="candidate.id">{{ candidate.name }}</option>
       </select>
     </div>
 
